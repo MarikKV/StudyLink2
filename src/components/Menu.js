@@ -26,32 +26,32 @@ export default function Menu() {
     useEffect(()=>{
         if(status === 'Guest'){
             setStatusLinks(
-                <Nav.Link href="/UserStatus">Підтвердити статус</Nav.Link>
+                <Nav.Link href="#/UserStatus">Підтвердити статус</Nav.Link>
             )
         }
         if(status === 'Student'){
             setStatusLinks(
                 <>
-                    <Nav.Link href="/Temes">Теми</Nav.Link>
-                    <Nav.Link href="/Online">Навчання онлайн</Nav.Link>
+                    <Nav.Link href="#/Temes">Теми</Nav.Link>
+                    <Nav.Link href="#/Online">Навчання онлайн</Nav.Link>
                 </>
             )
         }
         if(status === 'Teacher'){
             setStatusLinks(
                 <>
-                <Nav.Link href="/Temes">Теми</Nav.Link>
-                <Nav.Link href="/HomeTeacher">Мої групи</Nav.Link>
-                <Nav.Link href="/TeacherGroups">Додати/Видалити учня</Nav.Link>
+                <Nav.Link href="#/Temes">Теми</Nav.Link>
+                <Nav.Link href="#/HomeTeacher">Мої групи</Nav.Link>
+                <Nav.Link href="#/TeacherGroups">Додати/Видалити учня</Nav.Link>
                 </>
             )
        }
        if(status === 'Admin'){
         setStatusLinks(
             <>
-                <Nav.Link href="/Temes">Теми</Nav.Link>
-                <Nav.Link href="/Admin">Додати школу/групу/учня</Nav.Link>
-                <Nav.Link href="/AddTheme">Додати тему</Nav.Link>
+                <Nav.Link href="#/Temes">Теми</Nav.Link>
+                <Nav.Link href="#/Admin">Додати школу/групу/учня</Nav.Link>
+                <Nav.Link href="#/AddTheme">Додати тему</Nav.Link>
             </>
         )
    }
@@ -66,7 +66,7 @@ export default function Menu() {
                     {logged 
                         ? 
                         <>
-                            <Nav.Link href="/Home">Головна</Nav.Link>
+                            <Nav.Link href="#/Home">Головна</Nav.Link>
                             {statusLinks}
                         </>
                         :
@@ -89,7 +89,7 @@ export default function Menu() {
                         </Nav>
                         :
                         <Nav>
-                            <Nav.Link href="/Login">Увійти</Nav.Link>
+                            <Nav.Link href="#/Login">Увійти</Nav.Link>
                         </Nav>
                     }
                     

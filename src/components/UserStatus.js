@@ -217,7 +217,7 @@ export default function UserStatus() {
             .catch(err => console.log(err))
         }
     }, [admin, school])
-    if(myStatus !== 'Guest') return <Redirect to='/home'/>
+    if(myStatus !== 'Guest') return <Redirect to='#/home'/>
     return (
         <div className='form'>
             <h1 align='center'>Підтвердіть свій статус щоб продовжити</h1>

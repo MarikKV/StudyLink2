@@ -1,6 +1,7 @@
 {
   "name": "study-link-2",
   "version": "0.1.0",
+  "homepage": "https://marikkv.github.io/SL2",
   "private": true,
   "dependencies": {
     "@react-google-maps/api": "^1.9.8",
@@ -24,6 +25,8 @@
     "redux": "^4.0.5"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

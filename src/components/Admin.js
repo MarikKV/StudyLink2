@@ -119,7 +119,7 @@ export default function Admin() {
         
     }
 
-    if(myStatus !== 'Admin') return <Redirect to='/home'/>
+    if(myStatus !== 'Admin') return <Redirect to='#/home'/>
     return (
         <div>
             <AdminAdd schools={schools} groups={groups} students={students} refresh={() => refresh()}/>

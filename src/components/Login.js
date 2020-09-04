@@ -14,7 +14,7 @@ export default function Login() {
 
     
  
-    if(isLogged){return <Redirect to='/home'/>}
+    if(isLogged){return <Redirect to='#/home'/>}
 
    
     return (
