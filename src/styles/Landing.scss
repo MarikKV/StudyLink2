@@ -1,0 +1,111 @@
+.logo{
+    color: green;
+    font-size: 600%;
+}
+.float_left{
+    float: left;
+}
+.Block0, .Block1{
+    height: 600px;
+    text-align: center;
+}
+.Block0{
+    margin-top: 180px;
+}
+.Block1{
+    background-color: rgb(229, 236, 236);
+}
+.bg1{
+    background-color: rgb(141, 140, 138);
+    height: 300px;
+    font-size: 30px;
+    color: white;
+    font-family: fantasy;
+}
+.bg2{
+    background-color: rgb(62, 156, 33);
+    height: 300px;
+    font-size: 30px;
+    color: white;
+    font-family: fantasy;
+}
+.bg3{
+    font-size: 40px;
+    font-family: fantasy;
+}
+.bg4{
+    font-size: 40px;
+    font-family: fantasy;
+    background-color: rgb(72, 62, 78);
+    height: 270px;
+    color: white;
+}
+.landing_map{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 100px;
+    h1{
+        margin: 100px 0 50px;
+    }
+}
+@media (max-width: 1245px) {
+    .bg1, .bg2{
+        height: 400px;
+    }
+}
+@media (max-width: 710px) {
+    .bg1, .bg2{
+        font-size: 28px;
+        height: 500px;
+    }
+    .bg3{
+        font-size: 28px;
+    }
+    .bg4{
+        height: 400px;
+    }
+    .w-50{
+        width: 500px;
+    }
+}
+@media (max-width: 600px) {
+    .bg1, .bg2{
+        height: 500px;
+    }
+    .bg4{
+        font-size: 28px;
+        height: 350px;
+    }
+    .bg4 h1{font-size: 28px;}
+    .bg4 h3{font-size: 24px;}
+    .w-50{
+        width: 500px;
+    }
+}
+.html{
+    color:  rgb(175, 67, 18);
+}
+.css{
+    color:  rgb(80, 78, 161);
+}
+.js{
+    color:  rgb(207, 255, 35);
+}
+.git{
+    color:  rgb(43, 16, 25);
+}
+.program{
+    margin-left: 15%;
+    margin-bottom: 50px;
+}
+.footer{
+    padding: 20px 30px;
+    background: black;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+}

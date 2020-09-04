@@ -1,0 +1,25 @@
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Home from './components/Home';
+import Login from './components/Login';
+import Menu from './components/Menu';
+import Admin from './components/Admin';
+import Landing from './components/Landing';
+import Temes from './components/Temes';
+import AddTheme from './components/AddTheme';
+
+function App() {
+  return (
+    <Router>
+      <Route path='/' component={Menu}/>
+      <Route exact path='/' component={Landing}/>
+      <Route exact path='/Temes' component={Temes}/>
+      <Route exact path='/AddTheme' component={AddTheme}/>
+      <Route exact path='/Home' component={Home}/>
+      <Route exact path='/Admin' component={Admin}/>
+      <Route exact path='/Login' component={Login}/>
+    </Router>
+  );
+}
+
+export default App;
