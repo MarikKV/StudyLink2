@@ -1,23 +1,29 @@
 {
   "files": {
-    "main.css": "/SL2/static/css/main.f3b476af.chunk.css",
-    "main.js": "/SL2/static/js/main.28efe988.chunk.js",
-    "main.js.map": "/SL2/static/js/main.28efe988.chunk.js.map",
+    "main.css": "/SL2/static/css/main.7afb385e.chunk.css",
+    "main.js": "/SL2/static/js/main.c795fe62.chunk.js",
+    "main.js.map": "/SL2/static/js/main.c795fe62.chunk.js.map",
     "runtime-main.js": "/SL2/static/js/runtime-main.d52a5c70.js",
     "runtime-main.js.map": "/SL2/static/js/runtime-main.d52a5c70.js.map",
-    "static/js/2.e41d40ed.chunk.js": "/SL2/static/js/2.e41d40ed.chunk.js",
-    "static/js/2.e41d40ed.chunk.js.map": "/SL2/static/js/2.e41d40ed.chunk.js.map",
+    "static/js/2.2fcbaa1c.chunk.js": "/SL2/static/js/2.2fcbaa1c.chunk.js",
+    "static/js/2.2fcbaa1c.chunk.js.map": "/SL2/static/js/2.2fcbaa1c.chunk.js.map",
     "index.html": "/SL2/index.html",
-    "precache-manifest.63a37ac684830ad19e68679ea7e2469a.js": "/SL2/precache-manifest.63a37ac684830ad19e68679ea7e2469a.js",
+    "precache-manifest.c16afd6e5e77d5b2f8b84052be6a5007.js": "/SL2/precache-manifest.c16afd6e5e77d5b2f8b84052be6a5007.js",
     "service-worker.js": "/SL2/service-worker.js",
-    "static/css/main.f3b476af.chunk.css.map": "/SL2/static/css/main.f3b476af.chunk.css.map",
-    "static/js/2.e41d40ed.chunk.js.LICENSE.txt": "/SL2/static/js/2.e41d40ed.chunk.js.LICENSE.txt",
-    "static/media/program.jpg": "/SL2/static/media/program.09ba2146.jpg"
+    "static/css/main.7afb385e.chunk.css.map": "/SL2/static/css/main.7afb385e.chunk.css.map",
+    "static/js/2.2fcbaa1c.chunk.js.LICENSE.txt": "/SL2/static/js/2.2fcbaa1c.chunk.js.LICENSE.txt",
+    "static/media/files.png": "/SL2/static/media/files.26a167fe.png",
+    "static/media/klava.jpg": "/SL2/static/media/klava.74d39288.jpg",
+    "static/media/program.jpg": "/SL2/static/media/program.09ba2146.jpg",
+    "static/media/saveas.png": "/SL2/static/media/saveas.7e4244c8.png",
+    "static/media/skype1.png": "/SL2/static/media/skype1.5dacb5f5.png",
+    "static/media/skype2.png": "/SL2/static/media/skype2.7e33d8bb.png",
+    "static/media/skype3.png": "/SL2/static/media/skype3.a23c5a36.png"
   },
   "entrypoints": [
     "static/js/runtime-main.d52a5c70.js",
-    "static/js/2.e41d40ed.chunk.js",
-    "static/css/main.f3b476af.chunk.css",
-    "static/js/main.28efe988.chunk.js"
+    "static/js/2.2fcbaa1c.chunk.js",
+    "static/css/main.7afb385e.chunk.css",
+    "static/js/main.c795fe62.chunk.js"
   ]
 }
