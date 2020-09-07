@@ -95,7 +95,7 @@ export default function UserStatus() {
         }
     }
     //fields components
-    let [ schoolField, groupChuse, faillogin, loginAndPass, adminPassCheck ] = [null, null, null, null, null];
+    let [ schoolField, groupChuse, loginAndPass, adminPassCheck ] = [null, null, null, null];
     if(status === 'Учень'){
         schoolField = (
             <Form.Group controlId="exampleForm.ControlSelect1">

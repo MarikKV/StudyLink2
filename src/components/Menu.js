@@ -32,26 +32,26 @@ export default function Menu() {
         if(status === 'Student'){
             setStatusLinks(
                 <>
-                    <Nav.Link href="#/Temes"><i class="fas fa-book"></i> Теми</Nav.Link>
-                    <Nav.Link href="#/Online"><i class="fas fa-laptop-house"></i> Навчання онлайн</Nav.Link>
+                    <Nav.Link href="#/Temes"><i className="fas fa-book"></i> Теми</Nav.Link>
+                    <Nav.Link href="#/Online"><i className="fas fa-laptop-house"></i> Навчання онлайн</Nav.Link>
                 </>
             )
         }
         if(status === 'Teacher'){
             setStatusLinks(
                 <>
-                <Nav.Link href="#/Temes"><i class="fas fa-book"></i> Теми</Nav.Link>
-                <Nav.Link href="#/HomeTeacher"><i class="fas fa-users"></i> Мої групи</Nav.Link>
-                <Nav.Link href="#/TeacherGroups"><i class="fas fa-plus-circle"></i> Додати/Видалити учня</Nav.Link>
+                <Nav.Link href="#/Temes"><i className="fas fa-book"></i> Теми</Nav.Link>
+                <Nav.Link href="#/HomeTeacher"><i className="fas fa-users"></i> Мої групи</Nav.Link>
+                <Nav.Link href="#/TeacherGroups"><i className="fas fa-plus-circle"></i> Додати/Видалити учня</Nav.Link>
                 </>
             )
        }
        if(status === 'Admin'){
         setStatusLinks(
             <>
-                <Nav.Link href="#/Temes"><i class="fas fa-book"></i> Теми</Nav.Link>
-                <Nav.Link href="#/Admin"><i class="fas fa-plus-circle"></i> Додати школу/групу/учня</Nav.Link>
-                <Nav.Link href="#/AddTheme"><i class="fas fa-newspaper"></i> Додати тему</Nav.Link>
+                <Nav.Link href="#/Temes"><i className="fas fa-book"></i> Теми</Nav.Link>
+                <Nav.Link href="#/Admin"><i className="fas fa-plus-circle"></i> Додати школу/групу/учня</Nav.Link>
+                <Nav.Link href="#/AddTheme"><i className="fas fa-newspaper"></i> Додати тему</Nav.Link>
             </>
         )
    }
@@ -66,7 +66,7 @@ export default function Menu() {
                     {logged 
                         ? 
                         <>
-                            <Nav.Link href="#/Home"><i class="fas fa-home"></i> Головна</Nav.Link>
+                            <Nav.Link href="#/Home"><i className="fas fa-home"></i> Головна</Nav.Link>
                             {statusLinks}
                         </>
                         :
@@ -78,13 +78,13 @@ export default function Menu() {
                         ? 
                         <Nav>
                             <Nav.Link>
-                               <i class="far fa-user"></i> {user.name} &nbsp;&nbsp; {admin ? <b>admin</b> : null} 
+                               <i className="far fa-user"></i> {user.name} &nbsp;&nbsp; {admin ? <b>admin</b> : null} 
                             </Nav.Link>
-                            <Nav.Link onClick={logOut}><i class="fas fa-sign-out-alt"></i> Вийти</Nav.Link>
+                            <Nav.Link onClick={logOut}><i className="fas fa-sign-out-alt"></i> Вийти</Nav.Link>
                         </Nav>
                         :
                         <Nav>
-                            <Nav.Link href="#/Login"><i class="fas fa-sign-in-alt"></i> Увійти</Nav.Link>
+                            <Nav.Link href="#/Login"><i className="fas fa-sign-in-alt"></i> Увійти</Nav.Link>
                         </Nav>
                     }
                     
