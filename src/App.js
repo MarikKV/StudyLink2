@@ -9,6 +9,7 @@ import Temes from './components/Temes';
 import AddTheme from './components/AddTheme';
 import Online from './components/Online';
 import HomeTeacher from './components/HomeTeacher';
+import AddTeacher from './components/AddTeacher';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route exact path='/Online' component={Online}/>
       <Route exact path='/Home' component={Home}/>
       <Route exact path='/HomeTeacher' component={HomeTeacher}/>
+      <Route exact path='/AddTeacher' component={AddTeacher}/>
       <Route exact path='/Admin' component={Admin}/>
       <Route exact path='/Login' component={Login}/>
     </HashRouter>

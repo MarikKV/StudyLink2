@@ -89,7 +89,7 @@ export default function Online() {
                 <br/>
                 Або у цьому відео
                 <br/>
-                <iframe title="videow7" width="560" height="315" src="https://www.youtube.com/embed/RGTznA1IRDw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe title="videow7" width="560" height="315" src="https://www.youtube.com/embed/RGTznA1IRDw" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
             </p>
             <p>
                 Якщо після збереження файлу Notepad++ не зберігає розширення файлу яке ви вибрали спробуйте записувати його відразу у назві файлу. Для прикладу - 'z1.html' у полі назви файлу.
@@ -101,7 +101,7 @@ export default function Online() {
         <div className="skypeBlock1">
             <h3>Не знаю куди зберіг/зберегла файл</h3>
             <p align="center">
-                Файл завжди можна зберегти повторно або навіть замінити при збереженні вже існуючий.<br/> У Notepad++ натисніть 'Файл'>'Зберегти як' і знову вкажіть місце збереження і назву файлу.
+                Файл завжди можна зберегти повторно або навіть замінити при збереженні вже існуючий.<br/> У Notepad++ натисніть 'Файл' &rarr; 'Зберегти як' і знову вкажіть місце збереження і назву файлу.
             </p>
             <p align="center">
                 <img src={saveas} alt='files' width='40%'/>

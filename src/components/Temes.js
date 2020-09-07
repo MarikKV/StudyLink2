@@ -9,8 +9,6 @@ export default function Temes() {
     const user = useSelector(state => state.saveStudentInfo);
     const status = useSelector(state => state.status);
 
-    const allState = useSelector(state => state);
-
     const [temes, setTemes] = useState([]);
     const [temesJS, setTemesJS] = useState([]);
 
@@ -33,8 +31,12 @@ export default function Temes() {
                             ...doc.data()
                         }))
                         alltemes.sort((a, b) => a.id - b.id);
-                        const newTemes = alltemes.slice(0, data[0].temes_pass);
-                        setTemes(newTemes)
+                        if(user.kurs === '2'){
+                            setTemes(alltemes)
+                        } else {
+                            const newTemes = alltemes.slice(0, data[0].temes_pass);
+                            setTemes(newTemes)
+                        }
                     })
                     .catch( error => {
                         console.log(error)
@@ -48,7 +50,8 @@ export default function Temes() {
                             ...doc.data()
                         }))
                         alltemesJS.sort((a, b) => a.id - b.id);
-                        setTemesJS(alltemesJS)
+                        const newTemesJS = alltemesJS.slice(0, data[0].temes_pass);
+                        setTemesJS(newTemesJS)
                     })
                     .catch( error => {
                         console.log(error)
@@ -87,12 +90,10 @@ export default function Temes() {
                 console.log(error)
             });
         } 
-    },[status, user.group])
+    },[status, user.group, user.kurs])
 
     return (
         <div>
-            {console.log(allState)}
-
             {isLogged ? 
 
             <>

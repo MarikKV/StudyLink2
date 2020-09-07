@@ -7,12 +7,10 @@ import { Redirect } from 'react-router-dom';
 export default function Home() {
     const isLogged = useSelector(state => state.isLogged);
     const user = useSelector(state => state.saveStudentInfo);
-    const state = useSelector(state => state)
 
     if(!isLogged){ return <Redirect to='/login'/>}
     return (
         <div>
-            {console.log(state)}
             {isLogged 
                 ? 
                 <>

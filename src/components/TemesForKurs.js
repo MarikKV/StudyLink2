@@ -14,7 +14,7 @@ export default function TemesForKurs(props) {
                         <Card.Body>
                             {(item.task[0] !== "") ? 
                             <div>
-                                <h5 align="left" style={{color: '#196ff7'}}><i class="fas fa-tasks"></i> Завдання</h5>
+                                <h5 align="left" style={{color: '#196ff7'}}><i className="fas fa-tasks"></i> Завдання</h5>
                                 <ol>
                                 {item.task.map(item =>(
                                     <li align='left' style={{fontSize: '20px'}} key={item}><a href={'https://kosaniakmarianone.github.io/' + item} target='blank'>Завдання</a></li>
@@ -23,8 +23,8 @@ export default function TemesForKurs(props) {
                             </div>: ''
                             }
                             {(item.materials !== "") ? <h5 align='left'><a href={item.materials} target='blank'>
-                                <i class="fab fa-google-drive"></i> Матеріали</a></h5> : ''}
-                            {(item.video !== "") ? <h5 align='left'><a href={item.video} target='blank'><i class="fab fa-youtube"></i> Відео</a></h5> : ''}
+                                <i className="fab fa-google-drive"></i> Матеріали</a></h5> : ''}
+                            {(item.video !== "") ? <h5 align='left'><a href={item.video} target='blank'><i className="fab fa-youtube"></i> Відео</a></h5> : ''}
                             {(item.video === "" && item.materials === "" && item.task[0] === "") ? 'Тема не відкрита, або розглядається лише на занятті': ''}
                         </Card.Body>
                         </Accordion.Collapse>

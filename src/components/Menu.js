@@ -42,7 +42,7 @@ export default function Menu() {
                 <>
                 <Nav.Link href="#/Temes"><i className="fas fa-book"></i> Теми</Nav.Link>
                 <Nav.Link href="#/HomeTeacher"><i className="fas fa-users"></i> Мої групи</Nav.Link>
-                <Nav.Link href="#/TeacherGroups"><i className="fas fa-plus-circle"></i> Додати/Видалити учня</Nav.Link>
+                <Nav.Link href="#/AddTeacher"><i className="fas fa-plus-circle"></i> Додати/Видалити учня</Nav.Link>
                 </>
             )
        }

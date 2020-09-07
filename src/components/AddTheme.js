@@ -11,7 +11,6 @@ export default function AddStudent(props) {
     const [tema, setTema] = useState('');
     const [video, setVideo] = useState('');
     const [tasks, setTasks] = useState(0);
-    const [newTasks, setNewTasks] = useState([]);
     const [materials, setMaterials] = useState('');
 
     const myStyle = {
