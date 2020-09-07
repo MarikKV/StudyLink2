@@ -57,11 +57,13 @@ export default function UserStatus() {
                         }
                         return true
                     })
-                    if(!passed){ setErrorPass(true); console.log('show') }
+                    if(!passed){ 
+                        setErrorPass(true);
                         setTimeout(()=>{
                             setErrorPass(false)
                             console.log('hide')
                         }, 3000);
+                    }
                 }
             )
             .catch(err => console.log(err))
@@ -79,8 +81,14 @@ export default function UserStatus() {
                         dispatch(login(true))
                         dispatch(saveStudentInfoInStore({status, ...data[0]}))
                         dispatch(userStatus('Teacher'))
-   
+                    } else{
+                        setErrorPass(true);
+                        setTimeout(()=>{
+                            setErrorPass(false)
+                            console.log('hide')
+                        }, 3000);
                     }
+                    
                 }
             )
             .catch(err => console.log(err))
@@ -152,7 +160,7 @@ export default function UserStatus() {
                 </Form.Control>
             </Form.Group>
             <Form.Group controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
+                <Form.Label>Пароль</Form.Label>
                 <Form.Control 
                     name="password" 
                     type="password" 
@@ -226,7 +234,7 @@ export default function UserStatus() {
                     errorPass 
                         ?  
                         <Alert variant="danger">
-                           Wrong password!
+                           Невірний пароль!
                         </Alert> 
                         : ''
                 }
@@ -244,9 +252,6 @@ export default function UserStatus() {
 
                 {/*компонент для вибору групи у даному закладі (школі)*/}
                 {groupChuse}
-
-                {/*помилка при невірному введеню логіна чи пароля*/}
-                {faillogin}
 
                 {/*Admin перевірка паролю*/}
                 {adminPassCheck}
