@@ -50,7 +50,7 @@ export default function Temes() {
                             ...doc.data()
                         }))
                         alltemesJS.sort((a, b) => a.id - b.id);
-                        const newTemesJS = alltemesJS.slice(0, data[0].temes_pass);
+                        const newTemesJS = alltemesJS.slice(0, data[0].temes2_pass);
                         setTemesJS(newTemesJS)
                     })
                     .catch( error => {
@@ -95,7 +95,6 @@ export default function Temes() {
     return (
         <div>
             {isLogged ? 
-
             <>
                 <h1 align='center'>Теми відкриті для {user.name} </h1>
                 <div style={{width: '80%', marginLeft: '10%'}}>
@@ -106,7 +105,7 @@ export default function Temes() {
                     <Tab eventKey="JavaScript" title="JavaScript">
                         {user.kurs === '2'
                             ? 
-                            <TemesForKurs temes={temesJS}/> 
+                            <TemesForKurs temes={temesJS}/>
                             :
                             <h1 align='center'>Цей курс для Вас не відкритий</h1>}
                     </Tab>
@@ -119,7 +118,7 @@ export default function Temes() {
                 </div>
             </>
             :
-            <h1>Увійдіть щоб побачити теми</h1>
+            <h1 align="center">Увійдіть щоб побачити теми</h1>
             }
         </div>
     )

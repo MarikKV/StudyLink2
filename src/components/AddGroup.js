@@ -75,8 +75,8 @@ export default function AddStudent(props) {
                                         <Form.Label>Курс (вибір)</Form.Label>
                                         <Form.Control as="select" onChange={e=>setKurs(e.target.value)}>
                                             <option></option>
-                                            <option>1</option>
-                                            <option>2</option>
+                                            <option value='1'>1</option>
+                                            <option value='2'>2</option>
                                         </Form.Control>
                                     </Form.Group>
 

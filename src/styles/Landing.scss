@@ -1,6 +1,6 @@
 .logo{
     color: green;
-    font-size: 600%;
+    font-size: 6rem;
 }
 .float_left{
     float: left;
@@ -106,25 +106,27 @@ ul>li{text-align: left;}
     width: 80%;
 
     &_blocks{
-        display: grid;
+        display: flex;
         justify-content: space-around;
-        align-content: space-around;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
+        flex-wrap: wrap;
     }
     &_block{
         display: flex;
+        max-width: 400px;
         align-items: center;
-        margin: 25px 20px;
+        margin: 25px 0;
         font-size: 18px;
 
-        i{
-            font-size: 50px;
+        i{ 
+            font-size: 30px;
             color: green;
+            align-self: start;
+            padding-top: 10px;
         }
         p{
             text-align: left;
-            padding-left: 20px;
+            padding: 0 0 0 30px;
+            font-size: 18px;
         }
     }
 }
