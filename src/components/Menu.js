@@ -33,6 +33,7 @@ export default function Menu() {
             setStatusLinks(
                 <>
                     <Nav.Link href="#/Temes"><i className="fas fa-book"></i> Теми</Nav.Link>
+                    <Nav.Link href="#/Journal"><i className="fas fa-table"></i> Журнал</Nav.Link>
                     <Nav.Link href="#/Online"><i className="fas fa-laptop-house"></i> Навчання онлайн</Nav.Link>
                 </>
             )
@@ -43,6 +44,7 @@ export default function Menu() {
                 <Nav.Link href="#/Temes"><i className="fas fa-book"></i> Теми</Nav.Link>
                 <Nav.Link href="#/HomeTeacher"><i className="fas fa-users"></i> Мої групи</Nav.Link>
                 <Nav.Link href="#/AddTeacher"><i className="fas fa-plus-circle"></i> Додати/Видалити учня</Nav.Link>
+                <Nav.Link href="#/Online"><i className="fas fa-laptop-house"></i> Навчання онлайн</Nav.Link>
                 </>
             )
        }
@@ -52,6 +54,7 @@ export default function Menu() {
                 <Nav.Link href="#/Temes"><i className="fas fa-book"></i> Теми</Nav.Link>
                 <Nav.Link href="#/Admin"><i className="fas fa-plus-circle"></i> Додати школу/групу/учня</Nav.Link>
                 <Nav.Link href="#/AddTheme"><i className="fas fa-newspaper"></i> Додати тему</Nav.Link>
+                <Nav.Link href="#/Online"><i className="fas fa-laptop-house"></i> Навчання онлайн</Nav.Link>
             </>
         )
    }
@@ -59,7 +62,7 @@ export default function Menu() {
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 
-            <Navbar.Brand href="/">StudyLink</Navbar.Brand>
+            <Navbar.Brand href="#/">StudyLink</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">

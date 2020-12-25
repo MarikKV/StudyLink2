@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@700&family=Oswald&display=swap');
 .logo{
     color: green;
     font-size: 6rem;
@@ -12,18 +13,20 @@
     height: 480px;
     margin-top: 180px;
 }
-.Block1{
+.kurs_info{
     background-color: rgb(229, 236, 236);
     height: 600px;
     max-width: 1100px;
     margin: 0 auto;
     font-weight: 400;
+
+    h2{text-align: center;}
 }
-@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@700&family=Oswald&display=swap');
+
 .bg1,.bg2,.bg3,.bg4{
     font-family: 'Oswald', sans-serif;
 }
-ul>li{text-align: left;}
+ul>li{ text-align: left; }
 .bg1{
     background-color: rgb(141, 140, 138);
     height: 300px;
@@ -38,6 +41,7 @@ ul>li{text-align: left;}
 }
 .bg3{
     font-size: 40px;
+    text-align: center;
 }
 .bg4{
     font-size: 40px;
@@ -55,40 +59,6 @@ ul>li{text-align: left;}
         margin: 100px 0 50px;
     }
 }
-@media (max-width: 1245px) {
-    .bg1, .bg2{
-        height: 400px;
-    }
-}
-@media (max-width: 710px) {
-    .bg1, .bg2{
-        font-size: 28px;
-        height: 500px;
-    }
-    .bg3{
-        font-size: 28px;
-    }
-    .bg4{
-        height: 400px;
-    }
-    .w-50{
-        width: 500px;
-    }
-}
-@media (max-width: 600px) {
-    .bg1, .bg2{
-        height: 500px;
-    }
-    .bg4{
-        font-size: 28px;
-        height: 350px;
-    }
-    .bg4 h1{font-size: 28px;}
-    .bg4 h3{font-size: 24px;}
-    .w-50{
-        width: 500px;
-    }
-}
 .html{
     color:  rgb(175, 67, 18);
 }
@@ -102,14 +72,20 @@ ul>li{text-align: left;}
     color:  rgb(43, 16, 25);
 }
 .include{
-    margin: 100px 10%;
+    margin: 50px 10%;
     width: 80%;
+    float: right;
+
+    h2{
+        text-align: center;
+    }
 
     &_blocks{
         display: flex;
         justify-content: space-around;
         flex-wrap: wrap;
     }
+    
     &_block{
         display: flex;
         max-width: 400px;
@@ -133,10 +109,11 @@ ul>li{text-align: left;}
 .progamHeader{
     width: 80%;
     margin-left: 10%;
+    text-align: center;
 }
 .program{
-    margin-left: 20%;
-    margin-bottom: 50px;
+    width: 70%;
+    margin:20px 15%;
 }
 .footer{
     padding: 20px 30px;
@@ -146,4 +123,50 @@ ul>li{text-align: left;}
     align-items: center;
     justify-content: space-between;
     font-weight: 600;
+}
+@media (max-width: 1245px) {
+    .bg1, .bg2{
+        height: 400px;
+    }
+}
+@media (max-width: 710px) {
+    .bg1, .bg2{
+        font-size: 20px;
+        height: 250px!important;
+        width: 100%!important;
+    }
+    .bg3{
+        font-size: 28px;
+    }
+    .bg4{
+        height: 400px;
+        height: 250px!important;
+        font-size: 20px;
+    }
+    .w-50{
+        width: 500px;
+    }
+    .program{
+        width: 100%;
+        margin:0 auto 50px;
+    }
+}
+@media (max-width: 600px) {
+    .bg1, .bg2{
+        height: 500px;
+    }
+    .bg4{
+        font-size: 28px;
+        height: 350px;
+    }
+    .bg4 h1{font-size: 28px;}
+    .bg4 h3{font-size: 24px;}
+    .w-50{
+        width: 500px;
+    }
+}
+
+
+@media (max-width: 767.98px) {
+    .logo{ font-size: 4rem; }
 }

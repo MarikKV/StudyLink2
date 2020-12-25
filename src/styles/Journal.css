@@ -1,0 +1,8 @@
+.journal_container {
+  margin: 20px auto;
+}
+
+.journal_container .journal {
+  margin-left: calc(50% - 450px);
+}
+/*# sourceMappingURL=Journal.css.map */

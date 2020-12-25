@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
+body {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.container {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.container .hi {
+  margin: 10px 10px 0;
+  padding: 12px;
+  font-size: 50px;
+  color: green;
+  font-weight: bold;
+}
+
+.container .kurs {
+  padding: 10px;
+}
+
+.container .help {
+  padding: 10px;
+}
+
+.container h1 {
+  font-size: 35px;
+}
+
+.container h3 {
+  font-size: 25px;
+}
+
+.container .viber {
+  color: #7316ba;
+  font-weight: 700;
+}
+
+.container .important {
+  margin-top: 30px;
+}
+
+.container .important h2, .container .important h3 {
+  text-align: left;
+  font-weight: bold;
+  color: green;
+}
+
+.container .important h2 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.container .important h3 {
+  font-size: 24px;
+}
+
+.container .important_info {
+  text-align: left;
+}
+/*# sourceMappingURL=Home.css.map */

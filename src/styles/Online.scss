@@ -3,13 +3,18 @@
     padding: 30px;
     color: white;
     background-color: rgb(57, 57, 77);
+    line-height: 2;
 }
 .goSkype{
-    padding: 20px;
+    padding: 10px 20px;
+    display: inline-block;
     background-color: rgb(69, 196, 235);
     color: white;
     margin-left: 10px;
     border-radius: 10px;
+    &:hover{
+        text-decoration: none;
+    }
 }
 p{
     font-size: 16pt;

@@ -10,6 +10,7 @@ import AddTheme from './components/AddTheme';
 import Online from './components/Online';
 import HomeTeacher from './components/HomeTeacher';
 import AddTeacher from './components/AddTeacher';
+import Journal from './components/Journal';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route exact path='/AddTheme' component={AddTheme}/>
       <Route exact path='/Online' component={Online}/>
       <Route exact path='/Home' component={Home}/>
+      <Route exact path='/Journal' component={Journal}/>
       <Route exact path='/HomeTeacher' component={HomeTeacher}/>
       <Route exact path='/AddTeacher' component={AddTeacher}/>
       <Route exact path='/Admin' component={Admin}/>

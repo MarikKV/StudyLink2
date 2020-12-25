@@ -44,29 +44,30 @@ export default function HomeTeacher() {
     }
 
     const addThema = (id, temes, kurs) => {
-        if(kurs === '2'){
-            db.collection("Groups").doc(id).update({
+        console.log('add', kurs, id, temes)
+        if(kurs === 2){
+            db.collection("Groups").doc(`${id}`).update({
                 temes2_pass: temes + 1
             })
             .then( refresh() )
             .catch( error => console.log(error));
-        } if(kurs === '1'){
-            db.collection("Groups").doc(id).update({
-                temes_pass: temes+1
+        } if(kurs === 1){
+            db.collection("Groups").doc(`${id}`).update({
+                temes_pass: temes + 1
             })
             .then( refresh() )
             .catch( error => console.log(error));
         }   
     }
     const removeThema = (id, temes, kurs) => {
-        if(kurs === '2'){
-            db.collection("Groups").doc(id).update({
+        if(kurs === 2){
+            db.collection("Groups").doc(`${id}`).update({
                 temes2_pass: temes - 1
             })
             .then( refresh() )
             .catch( error => console.log(error));
-        } if(kurs === '1'){
-            db.collection("Groups").doc(id).update({
+        } if(kurs === 1){
+            db.collection("Groups").doc(`${id}`).update({
                 temes_pass: temes - 1
             })
             .then( refresh() )
@@ -94,13 +95,13 @@ export default function HomeTeacher() {
                             <td>
                                 <Button 
                                     variant='primary' 
-                                    onClick={() => addThema(group.id, group.kurs === '2' ? group.temes2_pass : group.temes_pass, group.kurs === '2' ? 2: 1)}
+                                    onClick={() => addThema(group.id, group.kurs === '2' ? group.temes2_pass : group.temes_pass, group.kurs === '2' ? 2 : 1)}
                                     >+</Button>
                             </td>
                             <td>
                                 <Button 
                                     variant='danger' 
-                                    onClick={() => removeThema(group.id, group.kurs === '2' ? group.temes2_pass : group.temes_pass, group.kurs === '2' ? 2: 1)}
+                                    onClick={() => removeThema(group.id, group.kurs === '2' ? group.temes2_pass : group.temes_pass, group.kurs === '2' ? 2 : 1)}
                                     >-</Button>
                             </td>
                         </tr>

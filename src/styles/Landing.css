@@ -1,0 +1,228 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@700&family=Oswald&display=swap");
+.logo {
+  color: green;
+  font-size: 6rem;
+}
+
+.float_left {
+  float: left;
+}
+
+.Block0, .Block1 {
+  text-align: center;
+}
+
+.Block0 {
+  height: 480px;
+  margin-top: 180px;
+}
+
+.kurs_info {
+  background-color: #e5ecec;
+  height: 600px;
+  max-width: 1100px;
+  margin: 0 auto;
+  font-weight: 400;
+}
+
+.kurs_info h2 {
+  text-align: center;
+}
+
+.bg1, .bg2, .bg3, .bg4 {
+  font-family: 'Oswald', sans-serif;
+}
+
+ul > li {
+  text-align: left;
+}
+
+.bg1 {
+  background-color: #8d8c8a;
+  height: 300px;
+  font-size: 25px;
+  color: white;
+}
+
+.bg2 {
+  background-color: #3e9c21;
+  height: 300px;
+  font-size: 25px;
+  color: white;
+}
+
+.bg3 {
+  font-size: 40px;
+  text-align: center;
+}
+
+.bg4 {
+  font-size: 40px;
+  background-color: #483e4e;
+  height: 270px;
+  color: white;
+}
+
+.landing_map {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  margin-bottom: 100px;
+}
+
+.landing_map h1 {
+  margin: 100px 0 50px;
+}
+
+.html {
+  color: #af4312;
+}
+
+.css {
+  color: #504ea1;
+}
+
+.js {
+  color: #cfff23;
+}
+
+.git {
+  color: #2b1019;
+}
+
+.include {
+  margin: 50px 10%;
+  width: 80%;
+  float: right;
+}
+
+.include h2 {
+  text-align: center;
+}
+
+.include_blocks {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.include_block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 400px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 25px 0;
+  font-size: 18px;
+}
+
+.include_block i {
+  font-size: 30px;
+  color: green;
+  -ms-flex-item-align: start;
+      -ms-grid-row-align: start;
+      align-self: start;
+  padding-top: 10px;
+}
+
+.include_block p {
+  text-align: left;
+  padding: 0 0 0 30px;
+  font-size: 18px;
+}
+
+.progamHeader {
+  width: 80%;
+  margin-left: 10%;
+  text-align: center;
+}
+
+.program {
+  width: 70%;
+  margin: 20px 15%;
+}
+
+.footer {
+  padding: 20px 30px;
+  background: black;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-weight: 600;
+}
+
+@media (max-width: 1245px) {
+  .bg1, .bg2 {
+    height: 400px;
+  }
+}
+
+@media (max-width: 710px) {
+  .bg1, .bg2 {
+    font-size: 20px;
+    height: 250px !important;
+    width: 100% !important;
+  }
+  .bg3 {
+    font-size: 28px;
+  }
+  .bg4 {
+    height: 400px;
+    height: 250px !important;
+    font-size: 20px;
+  }
+  .w-50 {
+    width: 500px;
+  }
+  .program {
+    width: 100%;
+    margin: 0 auto 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  .bg1, .bg2 {
+    height: 500px;
+  }
+  .bg4 {
+    font-size: 28px;
+    height: 350px;
+  }
+  .bg4 h1 {
+    font-size: 28px;
+  }
+  .bg4 h3 {
+    font-size: 24px;
+  }
+  .w-50 {
+    width: 500px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .logo {
+    font-size: 4rem;
+  }
+}
+/*# sourceMappingURL=Landing.css.map */

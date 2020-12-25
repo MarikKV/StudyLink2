@@ -20,10 +20,10 @@ export default function Landing() {
                     <br/><br/>
                     <h2>Курси програмування</h2>
                 </div>
-                <div className='Block1'>
+                <div className='kurs_info'>
                     <ReactWOW animation='bounceInLeft' duration="2s">
                         <div className='w-50 float_left bg1'>
-                            <h1>Умови:</h1>
+                            <h2>Умови:</h2>
                             <ul type='square'>
                                 <li> Для дітей 11-14 років.</li>
                                 <li>Заняття у компютерних класах з проектором. </li>
@@ -34,7 +34,7 @@ export default function Landing() {
                     </ReactWOW>
                     <ReactWOW animation='bounceInRight' duration="2s">
                         <div className='w-50 float_left bg2'>
-                            <h1>Навчимо: </h1>
+                            <h2>Навчимо: </h2>
                             <ul type='square'>
                                 <li>Створювати web-сайти.</li>
                                 <li>
@@ -52,7 +52,7 @@ export default function Landing() {
 
                     <ReactWOW animation='rotateInUpLeft' duration="1s">
                         <div className='w-100 float_left bg4'>
-                            <h1>По закінченю курсу ви отримуєте:</h1>
+                            <h2>По закінченю курсу ви отримуєте:</h2>
                             <h3>Знання необхідні у будь-якій сфері web-розробки</h3>
                             <h3>Роботи збережені на відкритому ресурсі</h3>
                             <h3>Курсову роботу яку не соромно розмістити у резюме</h3>
@@ -62,32 +62,32 @@ export default function Landing() {
                 </div>
 
                 <div className='include'>
-                    <h1>Що включає курс?</h1>
+                    <h2>Що включає курс?</h2>
                     <br/>
                     <div className='include_blocks'>
                         <div className='include_block'>
-                            <i class="fas fa-laptop"></i>
+                            <i className="fas fa-laptop"></i>
                             <p>Інтерактивний особистий кабінет з доступом до відео та матеріалів курсу</p>
                         </div>
 
                         <div className='include_block'>
-                            <i class="fas fa-hands-helping"></i>
+                            <i className="fas fa-hands-helping"></i>
                             <p>Постійні консультації і коментарі від викладача, навіть поза заняттями</p>
                         </div>
                         <div className='include_block'>
-                            <i class="fas fa-chalkboard-teacher"></i>
+                            <i className="fas fa-chalkboard-teacher"></i>
                             <p>Контроль знань - практичні роботи і тести</p>
                         </div>
                         <div className='include_block'>
-                            <i class="fas fa-check-double"></i>
+                            <i className="fas fa-check-double"></i>
                             <p>Кожна тема зкріплюється практичними завданнями</p>
                         </div>
                         <div className='include_block'>
-                            <i class="fas fa-tools"></i>
+                            <i className="fas fa-tools"></i>
                             <p>Знайомство з необхідними сучасними допоміжними інструментами та програмами для web-розробки</p>
                         </div>
                         <div className='include_block'>
-                            <i class="far fa-window-restore"></i> 
+                            <i className="far fa-window-restore"></i> 
                             <p>Кожен курс закінчується виконанням власного проекту</p>
                         </div>
                         

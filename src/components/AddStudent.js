@@ -6,7 +6,7 @@ export default function AddStudent(props) {
 
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
-
+    const [kurs, setKurs] = useState('');
 
     const myStyle = {
         width: '50%',
@@ -18,7 +18,8 @@ export default function AddStudent(props) {
             group,
             name,
             phone,
-            password: phone
+            password: phone,
+            kurs
         }
         console.log(data)
         db.collection("Students").doc().set(data)
@@ -53,6 +54,14 @@ export default function AddStudent(props) {
                                             placeholder="Телефон" 
                                             value={phone}
                                             onChange={e => setPhone(e.target.value)}/>
+                                    </Form.Group>
+                                    <Form.Group controlId="exampleForm.ControlSelect1">
+                                        <Form.Label>Курс (вибір)</Form.Label>
+                                        <Form.Control as="select" onChange={e=>setKurs(e.target.value)}>
+                                            <option></option>
+                                            <option value='1'>1</option>
+                                            <option value='2'>2</option>
+                                        </Form.Control>
                                     </Form.Group>
                                     <Button variant="primary" type="submit">
                                         Додати

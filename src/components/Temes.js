@@ -103,7 +103,7 @@ export default function Temes() {
                         <TemesForKurs temes={temes}/>
                     </Tab>
                     <Tab eventKey="JavaScript" title="JavaScript">
-                        {user.kurs === '2'
+                        {user.kurs === '2' || status === 'Teacher' || status === 'Admin'
                             ? 
                             <TemesForKurs temes={temesJS}/>
                             :
