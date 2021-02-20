@@ -17,7 +17,7 @@ export default function TemesForKurs(props) {
                                 <h5 align="left" style={{color: '#196ff7'}}><i className="fas fa-tasks"></i> Завдання</h5>
                                 <ol>
                                 {item.task.map(item =>(
-                                    <li align='left' style={{fontSize: '20px'}} key={item}><a href={'https://kosaniakmarianone.github.io/html-css/' + item} target='blank'>Завдання</a></li>
+                                    <li align='left' style={{fontSize: '20px'}} key={item}><a href={'https://kosaniakmarianone.github.io/'+ props.prefix +'/' + item} target='blank'>Завдання</a></li>
                                 ))}
                                 </ol>
                             </div>: ''
