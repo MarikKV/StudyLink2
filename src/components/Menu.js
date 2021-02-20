@@ -35,6 +35,7 @@ export default function Menu() {
                     <Nav.Link href="#/Temes"><i className="fas fa-book"></i> Теми</Nav.Link>
                     <Nav.Link href="#/Journal"><i className="fas fa-table"></i> Журнал</Nav.Link>
                     <Nav.Link href="#/Online"><i className="fas fa-laptop-house"></i> Навчання онлайн</Nav.Link>
+                    <Nav.Link href="#/Tests"><i className="fas fa-laptop-house"></i> Тести</Nav.Link>
                 </>
             )
         }
@@ -45,6 +46,7 @@ export default function Menu() {
                 <Nav.Link href="#/HomeTeacher"><i className="fas fa-users"></i> Мої групи</Nav.Link>
                 <Nav.Link href="#/AddTeacher"><i className="fas fa-plus-circle"></i> Додати/Видалити учня</Nav.Link>
                 <Nav.Link href="#/Online"><i className="fas fa-laptop-house"></i> Навчання онлайн</Nav.Link>
+                <Nav.Link href="#/Tests"><i className="fas fa-laptop-house"></i> Тести</Nav.Link>
                 </>
             )
        }
@@ -55,6 +57,8 @@ export default function Menu() {
                 <Nav.Link href="#/Admin"><i className="fas fa-plus-circle"></i> Додати школу/групу/учня</Nav.Link>
                 <Nav.Link href="#/AddTheme"><i className="fas fa-newspaper"></i> Додати тему</Nav.Link>
                 <Nav.Link href="#/Online"><i className="fas fa-laptop-house"></i> Навчання онлайн</Nav.Link>
+                <Nav.Link href="#/AddTest"><i className="fas fa-laptop-house"></i> Додати тести</Nav.Link>
+                <Nav.Link href="#/Tests"><i className="fas fa-laptop-house"></i> Тести</Nav.Link>
             </>
         )
    }
