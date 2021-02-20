@@ -100,12 +100,12 @@ export default function Temes() {
                 <div style={{width: '80%', marginLeft: '10%'}}>
                 <Tabs defaultActiveKey="HTML/CSS" id="uncontrolled-tab-example">
                     <Tab eventKey="HTML/CSS" title="HTML/CSS">
-                        <TemesForKurs temes={temes}/>
+                        <TemesForKurs temes={temes} prefix="html-css"/>
                     </Tab>
                     <Tab eventKey="JavaScript" title="JavaScript">
                         {user.kurs === '2' || status === 'Teacher' || status === 'Admin'
                             ? 
-                            <TemesForKurs temes={temesJS}/>
+                            <TemesForKurs temes={temesJS} prefix="/js"/>
                             :
                             <h1 align='center'>Цей курс для Вас не відкритий</h1>}
                     </Tab>
