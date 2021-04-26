@@ -32,7 +32,7 @@ export default function Journal() {
 
             {console.log(user)}
 
-            <iframe className="journal" width="900px" height="400px" src={public_sheet_url}></iframe>
+            <iframe title="jornal" className="journal" width="900px" height="400px" src={public_sheet_url}></iframe>
         </div>
     )
 }

@@ -29,7 +29,7 @@ export default function AddStudent(props) {
         if( tema !== '' && video !== '' && tasks > 0 ){
             let allNewTask = [];
             for(let i = 1; i <= tasks; i++){
-                allNewTask.push(`js/t${num}/z${i}`);
+                allNewTask.push(`t${num}/z${i}`);
             }
             data = {
                 tema,

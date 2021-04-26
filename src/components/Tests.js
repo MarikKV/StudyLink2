@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { db } from '../firebase';
+import { Form, Button } from 'react-bootstrap';
 export default function Temes() {
 
     const isLogged = useSelector(state => state.isLogged);
@@ -9,22 +10,40 @@ export default function Temes() {
 
     const [tests, setTests] = useState([]);
 
-    useEffect(()=>{
-        if(status === 'Student'){
-            
-            db.collection("Tests").doc("0").set([
-                {
-                    level: 1,
-                    question: "Скільки заголовків є у HTML?",
-                    variants: [
-                        "3", "4", "6", "8"
-                    ],
-                    unsver: "6"
-                }
-            ])
-            .then( res => console.log(res))
-            .catch( error => console.log(error) );
+    const time         = useRef(30);
+    const question     = useRef();
+    const unsverRight  = useRef();
+    const unsverFalse1 = useRef();
+    const unsverFalse2 = useRef();
+    const unsverFalse3 = useRef();
+  
 
+    const saveTest = () => {
+        const test = {
+            question: question.current.value,
+            unsverRight: unsverRight.current.value,
+            variants: [
+                unsverRight.current.value, 
+                unsverFalse1.current.value, 
+                unsverFalse2.current.value, 
+                unsverFalse3.current.value
+            ],
+            time: time.current.value,
+        }
+    
+        db.collection("Tests").doc().set(test)
+        .then( res => console.log(res))
+        .catch( error => console.log(error) );
+    }
+    const delTest = (id) =>{
+        console.log('deleted', id)
+        db.collection("Tests").doc(id).delete()
+        .then( res => console.log("Deleted - ", id))
+        .catch( error => console.log(error) );
+    }
+
+    useEffect(()=>{
+        if(isLogged){
             db.collection("Tests")
             .get()
             .then( snapsot => {
@@ -32,6 +51,7 @@ export default function Temes() {
                     id: doc.id,
                     ...doc.data()
                 }))
+                console.log(data)
                 setTests(data);
             })
             .catch( error => console.log(error) );
@@ -42,12 +62,72 @@ export default function Temes() {
         <div>
             {isLogged ? 
             <>
-                {console.log(tests)}
-                <h1>Тести по пройденим темам</h1>
+                <h1 className="text-center mt-3">Тести по пройденим темам</h1>
             </>
             :
-            <h1 align="center">Увійдіть щоб проходити тести</h1>
+            <h1 className="text-center mt-3">Увійдіть щоб проходити тести</h1>
             }
+
+            <Form className="col-6 mx-auto">
+                <Form.Group>
+                    <Form.Label>Question</Form.Label>
+                    <Form.Control ref={question} as="textarea" rows={2} placeholder="Enter question" />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Right answer</Form.Label>
+                    <Form.Control ref={unsverRight} as="textarea" rows={2} placeholder="Enter answer" />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>False answer</Form.Label>
+                    <Form.Control ref={unsverFalse1} as="textarea" rows={2} placeholder="Enter false answer" />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>False answer</Form.Label>
+                    <Form.Control ref={unsverFalse2} as="textarea" rows={2} placeholder="Enter false answer" />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>False answer</Form.Label>
+                    <Form.Control ref={unsverFalse3} as="textarea" rows={2} placeholder="Enter false answer" />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Time in secunds</Form.Label>
+                    <Form.Control ref={time} type="number" placeholder="30" />
+                </Form.Group>
+
+                <Button variant="primary" onClick={()=>saveTest()}>
+                    Submit
+                </Button>
+            </Form>
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Question</th>
+                        <th>Unsvers</th>
+                        <th>del</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {tests.map( (element, idx) => (
+                        <tr key={idx}>
+                            <td>{idx+1}</td>
+                            <td>{element.question}</td>
+                            <td>
+                                {element.variants.map( (unsver, idx) => (
+                                    <p key={idx} className="text-left p-0">{unsver}</p>
+                                ))}
+                            </td>
+                            <td>
+                                <button 
+                                    className="btn btn-danger btn-sm" 
+                                    onClick={()=>delTest(element.id)}
+                                >
+                                delete</button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     )
 }
