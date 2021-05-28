@@ -1,7 +1,7 @@
 {
   "name": "study-link-2",
-  "version": "0.1.0",
-  "homepage": "https://marikkv.github.io/StudyLink2",
+  "version": "0.1.1",
+  "homepage": "https://marikkv.github.io/StudyLink",
   "private": true,
   "dependencies": {
     "@react-google-maps/api": "^1.9.8",
