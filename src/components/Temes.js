@@ -11,6 +11,7 @@ export default function Temes() {
 
     const [temes, setTemes] = useState([]);
     const [temesJS, setTemesJS] = useState([]);
+    const [temesJS2, setTemesJS2] = useState([]);
 
     useEffect(()=>{
         if(status === 'Student'){
@@ -56,6 +57,22 @@ export default function Temes() {
                     .catch( error => {
                         console.log(error)
                     });
+
+                    db.collection("Temes3")
+                    .get()
+                    .then( snapsot => {
+                        const alltemesJS2 = snapsot.docs.map(doc => ({
+                            id: doc.id,
+                            ...doc.data()
+                        }))
+                        alltemesJS2.sort((a, b) => a.id - b.id);
+                        const newTemesJS2 = alltemesJS2.slice(0, data[0].temes3_pass);
+                        setTemesJS2(newTemesJS2)
+                        console.log(temesJS2)
+                    })
+                    .catch( error => {
+                        console.log(error)
+                    });
             })
             .catch( error => {
                 console.log(error)
@@ -89,6 +106,21 @@ export default function Temes() {
             .catch( error => {
                 console.log(error)
             });
+
+            db.collection("Temes3")
+            .get()
+            .then( snapsot => {
+                const alltemesJS2 = snapsot.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }))
+                alltemesJS2.sort((a, b) => a.id - b.id);
+                setTemesJS2(alltemesJS2)
+                console.log(temesJS2)
+            })
+            .catch( error => {
+                console.log(error)
+            });
         } 
     },[status, user.group, user.kurs])
 
@@ -106,6 +138,13 @@ export default function Temes() {
                         {user.kurs === '2' || status === 'Teacher' || status === 'Admin'
                             ? 
                             <TemesForKurs temes={temesJS} prefix="/js"/>
+                            :
+                            <h1 align='center'>Цей курс для Вас не відкритий</h1>}
+                    </Tab>
+                    <Tab eventKey="JavaScript2" title="JavaScript (v2)">
+                        {user.kurs === '3' || status === 'Teacher' || status === 'Admin'
+                            ? 
+                            <TemesForKurs temes={temesJS2} prefix="/js_2"/>
                             :
                             <h1 align='center'>Цей курс для Вас не відкритий</h1>}
                     </Tab>
