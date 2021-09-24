@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/StudyLink2/static/css/main.07e11ac9.chunk.css",
-    "main.js": "/StudyLink2/static/js/main.cd9a9dec.chunk.js",
-    "main.js.map": "/StudyLink2/static/js/main.cd9a9dec.chunk.js.map",
+    "main.js": "/StudyLink2/static/js/main.bde0d765.chunk.js",
+    "main.js.map": "/StudyLink2/static/js/main.bde0d765.chunk.js.map",
     "runtime-main.js": "/StudyLink2/static/js/runtime-main.4bba2902.js",
     "runtime-main.js.map": "/StudyLink2/static/js/runtime-main.4bba2902.js.map",
     "static/js/2.37550917.chunk.js": "/StudyLink2/static/js/2.37550917.chunk.js",
     "static/js/2.37550917.chunk.js.map": "/StudyLink2/static/js/2.37550917.chunk.js.map",
     "index.html": "/StudyLink2/index.html",
-    "precache-manifest.0827f9f89e33500d750c475726a5bd4f.js": "/StudyLink2/precache-manifest.0827f9f89e33500d750c475726a5bd4f.js",
+    "precache-manifest.cb25399306488b78fb828b67edba333b.js": "/StudyLink2/precache-manifest.cb25399306488b78fb828b67edba333b.js",
     "service-worker.js": "/StudyLink2/service-worker.js",
     "static/css/main.07e11ac9.chunk.css.map": "/StudyLink2/static/css/main.07e11ac9.chunk.css.map",
     "static/js/2.37550917.chunk.js.LICENSE.txt": "/StudyLink2/static/js/2.37550917.chunk.js.LICENSE.txt",
@@ -24,6 +24,6 @@
     "static/js/runtime-main.4bba2902.js",
     "static/js/2.37550917.chunk.js",
     "static/css/main.07e11ac9.chunk.css",
-    "static/js/main.cd9a9dec.chunk.js"
+    "static/js/main.bde0d765.chunk.js"
   ]
 }
