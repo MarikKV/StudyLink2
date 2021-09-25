@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Form, Button } from 'react-bootstrap';
-import { db } from '../firebase';
+import { db } from '../../firebase';
 
 export default function AddStudent(props) {
     

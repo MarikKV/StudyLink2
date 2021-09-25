@@ -13,16 +13,16 @@ export default function AdminAdd(props) {
 
     return (
         <div>
-            <h1 align="center">Додати школу <i class="fas fa-school"></i></h1>
+            <h1 align="center">Додати школу <i className="fas fa-school"></i></h1>
             
             <AddSchool schools={props.schools} refresh={props.refresh}/>
 
-            <h1 align="center">Додати групу <i class="fas fa-users"></i></h1>
+            <h1 align="center">Додати групу <i className="fas fa-users"></i></h1>
             <div style={myStyle2}>
                 <AddGroup schools={props.schools} groups={props.groups} refresh={props.refresh}/>
             </div>
 
-            <h1 align="center">Додати учня <i class="fas fa-user-graduate"></i></h1>
+            <h1 align="center">Додати учня <i className="fas fa-user-graduate"></i></h1>
             <div style={myStyle2}>
                 <AddStudent groups={props.groups} refresh={props.refresh}/>
             </div>

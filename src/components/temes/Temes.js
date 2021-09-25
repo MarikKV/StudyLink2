@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Tab, Tabs } from 'react-bootstrap';
-import { db } from '../firebase';
+import { db } from '../../firebase';
 import TemesForKurs from './TemesForKurs';
+
 export default function Temes() {
 
     const isLogged = useSelector(state => state.isLogged);

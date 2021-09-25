@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { Table, Button } from 'react-bootstrap';
-import { db } from '../firebase';
+import { db } from '../../firebase';
 
 
 import AdminAdd from './AdminAdd';

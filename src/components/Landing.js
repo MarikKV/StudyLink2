@@ -100,7 +100,7 @@ export default function Landing() {
 
                 <div className="footer">
                     <div className="footer-left">StudyLink</div>
-                    <div className="footer-center">Lviv 2020</div>
+                    <div className="footer-center">Lviv 2021</div>
                     <div className="footer-right">kosaniakm@gmail.com</div>
                 </div>
             </div>

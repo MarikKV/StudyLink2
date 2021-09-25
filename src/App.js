@@ -3,16 +3,16 @@ import { HashRouter, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Login from './components/Login';
 import Menu from './components/Menu';
-import Admin from './components/Admin';
+import Admin from './components/admin-edit/Admin';
 import Landing from './components/Landing';
-import Temes from './components/Temes';
-import AddTheme from './components/AddTheme';
+import Temes from './components/temes/Temes';
+import AddTheme from './components/admin-edit/AddTheme';
 import Online from './components/Online';
 import HomeTeacher from './components/HomeTeacher';
-import AddTeacher from './components/AddTeacher';
+import AddTeacher from './components/admin-edit/AddTeacher';
 import Journal from './components/Journal';
 import Tests from './components/Tests';
-import AddTest from './components/AddTest';
+import AddTest from './components/admin-edit/AddTest';
 
 function App() {
   return (

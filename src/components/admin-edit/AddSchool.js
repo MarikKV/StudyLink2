@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { db } from '../firebase';
+import { db } from '../../firebase';
 
 export default function AddStudent(props) {
 
@@ -40,8 +40,7 @@ export default function AddStudent(props) {
                 <Button variant="primary" type="submit">
                     Додати
                 </Button>
-            </Form>
-            
+            </Form>  
         </div>
     )
 }

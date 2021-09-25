@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Accordion, Card, Form, Button } from 'react-bootstrap';
-import { db } from '../firebase';
+import { db } from '../../firebase';
 
 export default function AddStudent(props) {
 
@@ -20,18 +20,17 @@ export default function AddStudent(props) {
             school,
             kurs,
             temes_pass: 0,
-            temes2_pass: 0
+            temes2_pass: 0, 
+            temes3_pass: 0
         }
         let groupsNames = [];
-        props.groups.map(group => groupsNames.push(group.name))
-        console.log(data)
+        props.groups.map(group => {if(group.school == school){ groupsNames.push(group.name) }})
         if(name !== '' && school !=='' && kurs !== '' && groupsNames.indexOf(name) === -1){
             db.collection("Groups").doc().set(data)
             setName('');
             setSchool('');
             setKurs('');
             props.refresh()
-        
         } else{
             alert('Група з такою назвою вже існує!')
         }
@@ -77,6 +76,7 @@ export default function AddStudent(props) {
                                             <option></option>
                                             <option value='1'>1</option>
                                             <option value='2'>2</option>
+                                            <option value='3'>3</option>
                                         </Form.Control>
                                     </Form.Group>
 
