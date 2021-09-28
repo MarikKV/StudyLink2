@@ -61,6 +61,7 @@ export default function AddStudent(props) {
                                             <option></option>
                                             <option value='1'>1</option>
                                             <option value='2'>2</option>
+                                            <option value='3'>3</option>
                                         </Form.Control>
                                     </Form.Group>
                                     <Button variant="primary" type="submit">

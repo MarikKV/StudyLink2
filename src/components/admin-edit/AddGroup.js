@@ -28,8 +28,6 @@ export default function AddStudent(props) {
         if(name !== '' && school !=='' && kurs !== '' && groupsNames.indexOf(name) === -1){
             db.collection("Groups").doc().set(data)
             setName('');
-            setSchool('');
-            setKurs('');
             props.refresh()
         } else{
             alert('Група з такою назвою вже існує!')
@@ -39,7 +37,7 @@ export default function AddStudent(props) {
         <div>
             <Accordion>
                 {props.schools.map( (school, index) => 
-                    <Card key={index}>
+                    <Card key={index} onClick={()=>setSchool(school.name)}>
                         <Accordion.Toggle as={Card.Header} eventKey={index.toString()}>
                             {school.name}
                         </Accordion.Toggle>
@@ -48,7 +46,7 @@ export default function AddStudent(props) {
                             <Card.Body>
                                 <h3>Існуючі групи</h3>
                                 {props.groups.map( (group, index)=>
-                                    group.school === school.name ? <span key={index}>&nbsp;&nbsp;{group.name} </span> : null
+                                    group.school === school.name ? <span key={index}>&nbsp;&nbsp;{group.name}</span> : null
                                 )}
                                 <Form style={myStyle} onSubmit={e=>addGroupToDb(e)}>
                                     <Form.Group controlId="formGroupNewGroup1">
@@ -58,16 +56,6 @@ export default function AddStudent(props) {
                                             placeholder="SL-106 / SL-201"
                                             value={name}
                                             onChange={e=>setName(e.target.value)} />
-                                    </Form.Group>
-
-                                    <Form.Group controlId="exampleForm.ControlSelect1">
-                                        <Form.Label>Школа (вибір)</Form.Label>
-                                        <Form.Control as="select" onChange={e=>setSchool(e.target.value)}>
-                                            <option></option>
-                                            {props.schools.map((school,idx)=>
-                                                <option key={idx}>{school.name}</option>
-                                            )}
-                                        </Form.Control>
                                     </Form.Group>
 
                                     <Form.Group controlId="exampleForm.ControlSelect1">
