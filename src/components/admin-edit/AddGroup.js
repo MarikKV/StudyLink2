@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Accordion, Card, Form, Button } from 'react-bootstrap';
 import { db } from '../../firebase';
 
-export default function AddStudent(props) {
+export default function AddGroup(props) {
 
     const [name, setName] = useState('');
     const [school, setSchool] = useState('');
@@ -19,9 +19,9 @@ export default function AddStudent(props) {
             name,
             school,
             kurs,
-            temes_pass: 0,
-            temes2_pass: 0, 
-            temes3_pass: 0
+            temes_pass: kurs > 1 ? 30 : 0,
+            temes2_pass: kurs > 2 ? 30 : 0, 
+            temes3_pass: kurs > 3 ? 30 : 0
         }
         let groupsNames = [];
         props.groups.map(group => {if(group.school == school){ groupsNames.push(group.name) }})

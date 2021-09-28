@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { db } from '../../firebase';
 
-export default function AddStudent(props) {
+export default function AddSchool(props) {
 
     const [name, setName] = useState('');
 

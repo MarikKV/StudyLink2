@@ -2,6 +2,7 @@ import React from 'react';
 import AddStudent from './AddStudent';
 import AddGroup from './AddGroup';
 import AddSchool from './AddSchool';
+import AddJournal from './AddJournal';
 
 export default function AdminAdd(props) {
     
@@ -20,6 +21,11 @@ export default function AdminAdd(props) {
             <h1 align="center">Додати групу <i className="fas fa-users"></i></h1>
             <div style={myStyle2}>
                 <AddGroup schools={props.schools} groups={props.groups} refresh={props.refresh}/>
+            </div>
+
+            <h1 align="center">Додати журнал <i className="fas fa-table"></i></h1>
+            <div style={myStyle2}>
+                <AddJournal schools={props.schools} groups={props.groups} refresh={props.refresh}/>
             </div>
 
             <h1 align="center">Додати учня <i className="fas fa-user-graduate"></i></h1>

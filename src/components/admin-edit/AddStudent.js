@@ -32,7 +32,7 @@ export default function AddStudent(props) {
             <Accordion>
                 {props.groups.map( (group, index) => 
                     <Card key={index}>
-                        <Accordion.Toggle as={Card.Header} eventKey={index.toString()}>
+                        <Accordion.Toggle as={Card.Header} eventKey={index.toString()} className="d-flex justify-content-between">
                             {group.school} - {group.name}
                         </Accordion.Toggle>
 
