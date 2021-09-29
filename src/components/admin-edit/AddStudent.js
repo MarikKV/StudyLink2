@@ -12,6 +12,10 @@ export default function AddStudent(props) {
         width: '50%',
         marginLeft: '25%'
     }
+    const mystyle2 = {
+        background: "lightpink"
+    }
+    
     function addStudnetToDb(e, group){
         e.preventDefault();
         let data = {
@@ -32,10 +36,11 @@ export default function AddStudent(props) {
             <Accordion>
                 {props.groups.map( (group, index) => 
                     <Card key={index}>
-                        <Accordion.Toggle as={Card.Header} eventKey={index.toString()} className="d-flex justify-content-between">
+                        <Accordion.Toggle as={Card.Header} eventKey={index.toString()} className="d-flex justify-content-between" style={group.inActive ? mystyle2: null}>
                             {group.school} - {group.name}
+                            <span>{props.students.filter(student => student.group == group.name).length}</span>
                         </Accordion.Toggle>
-
+                    
                         <Accordion.Collapse eventKey={index.toString()}>
                             <Card.Body>
                                 <Form style={myStyle}  onSubmit={e => addStudnetToDb(e, group.name)}>

@@ -10,6 +10,10 @@ export default function AdminAdd(props) {
         width: '70%',
         marginLeft: '15%'
     }
+    const inActiveGroups = props.groups.filter(g => g.inActive == true).map(g => g.name);
+    console.log(inActiveGroups)
+    const inActiveStudents = props.students.filter(s => inActiveGroups.includes(s.group));
+    console.log(inActiveStudents)
     if( props.schools !== [] && props.groups !== [] && props.students !== [] ){
 
     return (
@@ -29,8 +33,9 @@ export default function AdminAdd(props) {
             </div>
 
             <h1 align="center">Додати учня <i className="fas fa-user-graduate"></i></h1>
+            <h4 align="center">Всього - {props.students.length}</h4>
             <div style={myStyle2}>
-                <AddStudent groups={props.groups} refresh={props.refresh}/>
+                <AddStudent groups={props.groups} students={props.students} refresh={props.refresh}/>
             </div>
         </div>
     )

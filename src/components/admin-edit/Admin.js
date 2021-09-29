@@ -101,18 +101,18 @@ export default function Admin() {
 
     let num = 1;
     let groupN = '';
-    const drawStudnets = (studGroup, groupName, idx, name, phone, id) => {
+    const drawStudnets = (school, studSchool, studGroup, groupName, idx, name, phone, id) => {
         if(groupN !== groupName){
             groupN = groupName;
            num = 1
         }
-        if(studGroup === groupName){
+        if(studGroup === groupName ?? school === studSchool){
          return (
             <tr key={idx}>
                 <td>{num++}</td>
                 <td>{name}</td>
                 <td>{phone}</td>
-                <td><Button variant="danger" onClick={() => delStudent(id)}>Видалити</Button></td>
+                <td><Button variant="danger" className="btn-sm" onClick={() => delStudent(id)}>Видалити</Button></td>
             </tr> 
             )
         }
@@ -134,7 +134,7 @@ export default function Admin() {
                         group.school === school.name ?
                         <div key={index}>
                             <h1 align="center">{group.name}</h1>
-                            <Table striped bordered hover>
+                            <Table striped bordered hover className="table-sm">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -145,7 +145,7 @@ export default function Admin() {
                                 </thead>
                                 <tbody>
                                     {students.map((student, idx) => 
-                                        drawStudnets(student.group, group.name, idx, student.name, student.phone, student.id)   
+                                        drawStudnets(school.name, student.school, student.group, group.name, idx, student.name, student.phone, student.id)   
                                     )}
                                 </tbody>
                             </Table>

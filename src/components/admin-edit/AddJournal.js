@@ -8,6 +8,9 @@ export default function AddJournal(props) {
         width: '90%',
         marginLeft: '5%'
     }
+    const mystyle2 = {
+        background: "lightpink"
+    }
 
     function editGroup(e, group){
         e.preventDefault();
@@ -28,7 +31,7 @@ export default function AddJournal(props) {
             <Accordion>
             {props.groups.map( (group, index) => 
                 <Card key={index}>
-                    <Accordion.Toggle as={Card.Header} eventKey={index.toString()} className="d-flex justify-content-between">
+                    <Accordion.Toggle as={Card.Header} eventKey={index.toString()} className="d-flex justify-content-between" style={group.inActive ? mystyle2: null}>
                         <span>{group.school} - {group.name}</span>
                         <span> 
                             {group.journal_public != null && group.journal != null ? "✔" : "❌"}
@@ -53,6 +56,13 @@ export default function AddJournal(props) {
                                         placeholder="Публічний лінк на журнал" 
                                         value={group.journal_public}
                                         onChange={e => {group.journal_public = e.target.value}}/>
+                                </Form.Group>
+                                <Form.Group controlId="formGroupActive">
+                                    <Form.Check 
+                                        type="checkbox" 
+                                        label="Зянняття більше не проводяться"
+                                        defaultChecked={group.inActive ? true : false}
+                                        onChange={e => {group.inActive = e.target.checked}}/>
                                 </Form.Group>
                                 <Button variant="primary" type="submit">
                                     Додати
