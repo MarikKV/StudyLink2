@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "194160e7cacd40399a47d5b36a75e680",
+    "revision": "d791049dc84abb81ab2fc6e0ff3e073b",
     "url": "/StudyLink2/index.html"
   },
   {
-    "revision": "020bef8750a5a03390cc",
+    "revision": "a4e60d86805a64e454c8",
     "url": "/StudyLink2/static/css/main.d0eb26e0.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/StudyLink2/static/js/2.22f8da75.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "020bef8750a5a03390cc",
-    "url": "/StudyLink2/static/js/main.2debde9b.chunk.js"
+    "revision": "a4e60d86805a64e454c8",
+    "url": "/StudyLink2/static/js/main.57a3551b.chunk.js"
   },
   {
     "revision": "5f1fdc757e7a4e4a90cc",
