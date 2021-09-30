@@ -51,9 +51,13 @@ export default function Temes() {
                             id: doc.id,
                             ...doc.data()
                         }))
+                        console.log(alltemesJS, "test")
                         alltemesJS.sort((a, b) => a.id - b.id);
+                        
                         const newTemesJS = alltemesJS.slice(0, data[0].temes2_pass);
                         setTemesJS(newTemesJS)
+                        console.log(temesJS)
+                        
                     })
                     .catch( error => {
                         console.log(error)
@@ -69,7 +73,7 @@ export default function Temes() {
                         alltemesJS2.sort((a, b) => a.id - b.id);
                         const newTemesJS2 = alltemesJS2.slice(0, data[0].temes3_pass);
                         setTemesJS2(newTemesJS2)
-                        console.log(temesJS2)
+                        console.log(temesJS2, "test2")
                     })
                     .catch( error => {
                         console.log(error)
@@ -136,14 +140,14 @@ export default function Temes() {
                         <TemesForKurs temes={temes} prefix="html-css"/>
                     </Tab>
                     <Tab eventKey="JavaScript" title="JavaScript">
-                        {user.kurs === '2' || status === 'Teacher' || status === 'Admin'
+                        {user.kurs >= '2' || status === 'Teacher' || status === 'Admin'
                             ? 
                             <TemesForKurs temes={temesJS} prefix="/js"/>
                             :
                             <h1 align='center'>Цей курс для Вас не відкритий</h1>}
                     </Tab>
                     <Tab eventKey="JavaScript2" title="JavaScript (v2)">
-                        {user.kurs === '3' || status === 'Teacher' || status === 'Admin'
+                        {user.kurs >= '3' || status === 'Teacher' || status === 'Admin'
                             ? 
                             <TemesForKurs temes={temesJS2} prefix="/js_2"/>
                             :
