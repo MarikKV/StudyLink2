@@ -19,7 +19,6 @@ export default function Login() {
    
     return (
         <div>
-            {console.log(state)}
             {!isLogged ? 
                 <UserStatus />
                 : 

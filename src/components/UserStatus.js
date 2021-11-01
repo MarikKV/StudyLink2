@@ -50,6 +50,10 @@ export default function UserStatus() {
                     }))
                     data.map(user => {
                         if(user.password === groupPassword){ 
+                            console.log(user.id)
+                            db.collection('Students').doc(user.id).update({
+                                lastLogin: Date.now()
+                            })
                             dispatch(login(true))
                             dispatch(saveStudentInfoInStore({status, ...user}))
                             dispatch(userStatus('Student'))
