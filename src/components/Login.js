@@ -10,10 +10,7 @@ import UserStatus from './UserStatus';
 export default function Login() {
     const isLogged = useSelector(state => state.isLogged);
     const user = useSelector(state => state.saveStudentInfo);
-    const state = useSelector(state => state)
 
-    
- 
     if(isLogged){return <Redirect to='Home'/>}
 
    

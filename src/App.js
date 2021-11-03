@@ -11,8 +11,8 @@ import Online from './components/Online';
 import HomeTeacher from './components/HomeTeacher';
 import AddTeacher from './components/admin-edit/AddTeacher';
 import Journal from './components/Journal';
-import Tests from './components/Tests';
-import AddTest from './components/admin-edit/AddTest';
+import Tests from './components/tests/Tests';
+import AddTest from './components/admin-edit/AddTests';
 
 function App() {
   return (

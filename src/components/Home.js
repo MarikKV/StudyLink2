@@ -8,6 +8,8 @@ export default function Home() {
     const isLogged = useSelector(state => state.isLogged);
     const user = useSelector(state => state.saveStudentInfo);
 
+    console.log(user);
+    
     if(!isLogged){ return <Redirect to='/login'/>}
     return (
         <div>
