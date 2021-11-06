@@ -11,12 +11,15 @@ export default function Tests() {
 
     const [tests, setTests] = useState([]);
     const [test, setTest] = useState([]);
+    const [testIndex, setTestIndex] = useState([]);
 
-    const loadNewTest = function(test){
+    const loadNewTest = function(test, testIndex){
         setTest(test);
+        setTestIndex(testIndex)
     }
     
     useEffect(()=>{
+        let timer;
         if(isLogged){
             db.collection("Tests")
             .get()
@@ -27,11 +30,22 @@ export default function Tests() {
                 }))
                 console.log(data)
                 setTests(data);
-                
-                loadNewTest(data[0], 0);
+                let timeForTest = data[0].time;
+                let i=0;
+                loadNewTest(data[i], i)
+                timer = setInterval(()=>{
+                    timeForTest--;
+                    if(timeForTest<=0){
+                        i++;
+                        loadNewTest(data[i], i);
+                        timeForTest = data[i].time;
+                    }
+                    if(i >= data.length){clearInterval(timer)}
+                }, 1000)
             })
             .catch( error => console.log(error) );
         }
+        return () => clearInterval(timer);
     },[status, user.group, user.kurs])
 
     return (
@@ -39,7 +53,7 @@ export default function Tests() {
             {isLogged ? 
             <>
                 <h1 className="text-center mt-3">Тести по пройденим темам</h1>
-                <Test test={test}/>
+                <Test test={test} testIndex={testIndex}/>
             </>
             :
             <h1 className="text-center mt-3">Увійдіть щоб проходити тести</h1>

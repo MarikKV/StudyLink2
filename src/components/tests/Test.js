@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { db } from '../../firebase';
+import '../../styles/Test.scss';
 
 export default function Test(props) {
 
@@ -10,7 +11,6 @@ export default function Test(props) {
 
     const [line, setLine] = useState("100%");
     const [left, setLeft] = useState(0);
-    const [tests, setTests] = useState([]);
 
     const [lineStyles, setLineStyles] = useState({
         "height": "10px",
@@ -47,6 +47,18 @@ export default function Test(props) {
                             }
                         })
                     }
+                    let newLineVal = Number(line.replace("%","") - period);
+                    if(newLineVal <= 1) {
+                        document.getElementById('line').classList.remove('test_line');
+                        setLineStyles(style => { 
+                            return {
+                                ...style,
+                                "background": "green" 
+                            }
+                        })
+                        setTimeout( ()=>{document.getElementById('line').classList.add('test_line')}, 500)
+                        return "100%"; 
+                    }
                     return Number(line.replace("%","") - period) + "%"
                 } )
             }, 1000)
@@ -59,13 +71,13 @@ export default function Test(props) {
         
         <div className="mt-5">
             <h4>Часу залишилось: {left}</h4>
-            <hr style={lineStyles} align="left" color="green" width={line} />
+            <hr style={lineStyles} id="line" className="test_line" align="left" color="green" width={line} />
             
             <h2 className="text-left mt-5">{props.test.question}</h2>
            
             <div className="my-5">
                 {props.test.variants?.map( (unsver, idx) => (
-                    <p key={idx} className="text-left p-0">{unsver}</p>
+                    <p key={idx} className="text-left p-2 unsver">{idx+1}. {unsver}</p>
                 ))}
             </div>
         </div>
