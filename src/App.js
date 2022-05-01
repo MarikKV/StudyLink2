@@ -6,6 +6,7 @@ import Menu from './components/Menu';
 import Admin from './components/admin-edit/Admin';
 import Landing from './components/Landing';
 import Temes from './components/temes/Temes';
+import Kursova from './components/Kursova';
 import AddTheme from './components/admin-edit/AddTheme';
 import Online from './components/Online';
 import HomeTeacher from './components/HomeTeacher';
@@ -30,6 +31,7 @@ function App() {
       <Route exact path='/AddTeacher' component={AddTeacher}/>
       <Route exact path='/Admin' component={Admin}/>
       <Route exact path='/Login' component={Login}/>
+      <Route exact path='/Kursova' component={Kursova}/>
     </HashRouter>
   );
 }
