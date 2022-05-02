@@ -11,9 +11,7 @@ export default function AdminAdd(props) {
         marginLeft: '15%'
     }
     const inActiveGroups = props.groups.filter(g => g.inActive == true).map(g => g.name);
-    console.log(inActiveGroups)
     const inActiveStudents = props.students.filter(s => inActiveGroups.includes(s.group));
-    console.log(inActiveStudents)
     if( props.schools !== [] && props.groups !== [] && props.students !== [] ){
 
     return (

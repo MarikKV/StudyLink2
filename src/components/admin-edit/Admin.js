@@ -70,7 +70,6 @@ export default function Admin() {
         .catch( error => {
             console.log(error)
         });
-        console.log('refreshed')
     },[reloadData])
 
     function refresh(){
@@ -101,7 +100,7 @@ export default function Admin() {
 
     let num = 1;
     let groupN = '';
-    const drawStudnets = (school, studSchool, studGroup, groupName, idx, name, phone, id, lastLogin) => {
+    const drawStudnets = (school, studSchool, studGroup, groupName, idx, name, phone, id, lastLogin, kursova_1, kursova_2, kursova_3) => {
         if(groupN !== groupName){
             groupN = groupName;
            num = 1
@@ -129,6 +128,11 @@ export default function Admin() {
                     <td>{num++}</td>
                     <td>{name}</td>
                     <td>{phone}</td>
+                    <td>
+                        {kursova_1 ? <span><a href={kursova_1} target="_blank">Курсова №1</a><br/></span> : null }
+                        {kursova_2 ? <span><a href={kursova_2} target="_blank">Курсова №2</a><br/></span> : null }
+                        {kursova_3 ? <span><a href={kursova_3} target="_blank">Курсова №3</a><br/></span> : null }
+                    </td>
                     <td className="text-center">{lastLogin != null ? span : ""}</td>
                     <td className="text-center">{Date.now() <= lastLogin + 10800000 ? "✅" : "❌"}</td>
                     <td><Button variant="danger" className="btn-sm" onClick={() => delStudent(id)}>Видалити</Button></td>
@@ -159,6 +163,7 @@ export default function Admin() {
                                         <th>#</th>
                                         <th>Ім'я</th>
                                         <th>Номер телефону</th>
+                                        <th>Курсові роботи</th>
                                         <th>Останній вхід</th>
                                         <th>Логування на занятті</th>
                                         <th>Видалити учня</th>
@@ -166,7 +171,20 @@ export default function Admin() {
                                 </thead>
                                 <tbody>
                                     {students.map((student, idx) => 
-                                        drawStudnets(school.name, student.school, student.group, group.name, idx, student.name, student.phone, student.id, student.lastLogin)   
+                                        drawStudnets(
+                                            school.name, 
+                                            student.school, 
+                                            student.group, 
+                                            group.name, 
+                                            idx, 
+                                            student.name, 
+                                            student.phone, 
+                                            student.id, 
+                                            student.lastLogin,
+                                            student.kursach_1,
+                                            student.kursach_2,
+                                            student.kursach_3
+                                        )   
                                     )}
                                 </tbody>
                             </Table>
