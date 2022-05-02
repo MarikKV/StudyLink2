@@ -23,7 +23,8 @@ export default function AddStudent(props) {
             name,
             phone,
             password: phone,
-            kurs
+            kurs,
+            groupId: group.id
         }
         console.log(data)
         db.collection("Students").doc().set(data)
