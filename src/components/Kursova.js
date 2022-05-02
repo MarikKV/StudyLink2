@@ -59,7 +59,7 @@ export default function Kursova() {
                                     <Form.Label>Курсова робота №2 (HTML/CSS/JS)</Form.Label>
                                     <div className="d-flex align-items-center">
                                         <Form.Control type="text" placeholder="Link on github" ref={kursach_2} />
-                                        <a className='link-primary ml-3' target="_blank" href={kursach_2}>Відкрити</a>
+                                        <a className='link-primary ml-3' target="_blank" href={userInfo.kursach_2}>Відкрити</a>
                                     </div>
                                 </Form.Group>
                                 : null
@@ -71,7 +71,7 @@ export default function Kursova() {
                                     <Form.Label>Курсова робота №3 (HTML/CSS/JS)</Form.Label>
                                     <div className="d-flex align-items-center">
                                         <Form.Control type="text" placeholder="Link on github" ref={kursach_3} />
-                                        <a className='link-primary ml-3' target="_blank" href={kursach_3}>Відкрити</a>
+                                        <a className='link-primary ml-3' target="_blank" href={userInfo.ursach_3}>Відкрити</a>
                                     </div>
                                 </Form.Group>
                                 : null
