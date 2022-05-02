@@ -16,6 +16,7 @@ export default function Kursova() {
     console.log(user);
     
     const updateUserKursach = async function(){
+        if(!user)return
         const userInfo = (await db.collection("Students").doc(user.id).get()).data();
         
         if(kursach_1.current){userInfo.kursach_1 = kursach_1.current.value}

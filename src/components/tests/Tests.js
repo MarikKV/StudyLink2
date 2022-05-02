@@ -8,6 +8,7 @@ export default function Tests() {
     const isLogged = useSelector(state => state.isLogged);
     const user = useSelector(state => state.saveStudentInfo);
     const status = useSelector(state => state.status);
+    const time_multilpier = 2;
 
     const [tests, setTests] = useState([]);
     const [test, setTest] = useState([]);
@@ -18,37 +19,32 @@ export default function Tests() {
         setTest(test);
         setTestIndex(testIndex)
     }
-    
-    useEffect(()=>{
+    const getTests = async function(){
         let timer;
-        if(isLogged){
-            db.collection("Tests")
-            .get()
-            .then( snapsot => {
-                const data = snapsot.docs.map(doc => ({
-                    id: doc.id,
-                    ...doc.data()
-                }))
-                console.log(data)
-                setTests(data);
-                let timeForTest = data[0].time;
-                let i=0;
-                loadNewTest(data[i], i)
-                setTimeLeft(data[i].time)
-                timer = setInterval(()=>{
-                    timeForTest--;
-                    if(timeForTest<=0){
-                        i++;
-                        loadNewTest(data[i], i);
-                        timeForTest = data[i].time;
-                    }
-                    setTimeLeft(timeForTest)
-                    if(i >= data.length - 1){clearInterval(timer)}
-                }, 1000)
-            })
-            .catch( error => console.log(error) );
-        }
+        let tests = [];
+        (await db.collection("Tests").get()).forEach(test => tests.push({id: test.id, ...test.data()}))
+        setTests(tests);
+            let timeForTest = tests[0].time * time_multilpier;
+            let i = 0;
+            loadNewTest(tests[i], i)
+            setTimeLeft(tests[i].time * time_multilpier)
+            timer = setInterval(()=>{
+                timeForTest--;
+                if(timeForTest <= 0){
+                    i++;
+                    loadNewTest(tests[i], i);
+                    timeForTest = tests[i].time * time_multilpier;
+                }
+                setTimeLeft(timeForTest)
+                if(i >= tests.length - 1){ clearInterval(timer) }
+            }, 1000
+        )
         return () => clearInterval(timer);
+    }
+    useEffect(()=>{
+        if(isLogged){
+            getTests();
+        }
     },[status, user.group, user.kurs])
 
     return (
@@ -57,6 +53,9 @@ export default function Tests() {
             <>
                 <h1 className="text-center mt-3">Тести по пройденим темам</h1>
                 <Test test={test} testIndex={testIndex} timeLeft={timeLeft}/>
+                <div align="right">
+                    <button className="btn btn-primary">Наступний</button>
+                </div>
             </>
             :
             <h1 className="text-center mt-3">Увійдіть щоб проходити тести</h1>

@@ -8,6 +8,7 @@ export default function Test(props) {
     const isLogged = useSelector(state => state.isLogged);
     const user = useSelector(state => state.saveStudentInfo);
     const status = useSelector(state => state.status);
+    const time_multilpier = 2;
 
     const [line, setLine] = useState("100%");
 
@@ -16,52 +17,42 @@ export default function Test(props) {
         "background": "green"
     });
 
+    const chuseAnswer = function(element, unsver){
+        cleareAnswers();
+        element.classList.add('selected-answer');
+        console.log(unsver)
+    }
+
+    const cleareAnswers = function(){
+        document.querySelectorAll('.unsver').forEach(e=>e.classList.remove('selected-answer'));
+        console.log('clear')
+    }
+
     useEffect(()=>{
         if(props.test.time != null){
 
-            let start = props.test.time;
+            let start = props.test.time*time_multilpier;
             let left = props.timeLeft;
             setLine(line => {
                
-                if(left < start*(0.65) && left > start*0.35){
-                    setLineStyles(style => { 
-                        return {
-                            ...style,
-                            "background": "orange" 
-                        }
-                    })
+                if(left >= start*(0.65)){
+                    setLineStyles(style => { return { ...style, "background": "green"  } })
                 }
-                
+                else if(left < start*(0.65) && left > start*0.35){
+                    setLineStyles(style => { return { ...style, "background": "orange" } })
+                }
                 else if(left <= start*(0.35) && start>=1 && left >=1){
-                    setLineStyles(style => { 
-                        return {
-                            ...style,
-                            "background": "red" 
-                        }
-                    })
+                    setLineStyles(style => { return { ...style, "background": "red"    } })
                 }
                 
-                let newLineVal = (100*left)/start;
-                
-                if(newLineVal < start/100) {
-                    document.getElementById('line').classList.remove('test_line');
-                    setLineStyles(style => { 
-                        return {
-                            ...style,
-                            "background": "green" 
-                        }
-                    })
-                    setTimeout( ()=>{document.getElementById('line').classList.add('test_line')}, 1000 )
-                    return "100%"; 
-                }
-                return newLineVal + "%"
+                return (100*left)/start + "%";
             } )
         }
-    },[status, props])
+    }, [status, props])
 
     return (
-        
         <div className="mt-5">
+            { props.timeLeft == 1 ? cleareAnswers() : null }
             <h4>Часу залишилось: {props.timeLeft}</h4>
             <hr style={lineStyles} id="line" className="test_line" align="left" color="green" width={line} />
             
@@ -69,10 +60,9 @@ export default function Test(props) {
            
             <div className="my-5">
                 {props.test.variants?.map( (unsver, idx) => (
-                    <p key={idx} className="text-left p-2 unsver">{idx+1}. {unsver}</p>
+                    <p key={idx} className="text-left p-2 unsver" onClick={e => chuseAnswer(e.target, unsver)}>{idx+1}. {unsver}</p>
                 ))}
             </div>
         </div>
-        
     )
 }
