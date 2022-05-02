@@ -22,54 +22,30 @@ export default function Admin() {
         marginLeft: '10%'
     }
 
-    useEffect(()=>{
-        db.collection("Schools")
-        .get()
-        .then( snapsot => {
-            const data = snapsot.docs.map(doc => ({
-                id: doc.id,
-                ...doc.data()
-            }))
-            setSchools(data)
-        })
-        .catch( error => {
-            console.log(error)
-        });
-        
-        db.collection("Groups")
-        .get()
-        .then( snapsot => {
-            const data = snapsot.docs.map(doc => ({
-                id: doc.id,
-                ...doc.data()
-            }))
-            data.sort((a,b) =>{ 
-                if( a.school.toUpperCase() > b.school.toUpperCase() ){
-                    return 1
-                } else {
-                    return -1
-                }
-            })
-           
-            setGroups(data)
-        })
-        .catch( error => {
-            console.log(error)
-        });
+    const getSchools = async function(){
+        const db_schools = [];
+        (await db.collection("Schools").get()).forEach(school => db_schools.push( {id: school.id, ...school.data()} ))
+        setSchools(db_schools);
+    }
 
-        
-        db.collection("Students")
-        .get()
-        .then( snapsot => {
-            const data = snapsot.docs.map(doc => ({
-                id: doc.id,
-                ...doc.data()
-            }))
-            setStudents(data)
-        })
-        .catch( error => {
-            console.log(error)
-        });
+    const getGroups = async function(){
+        const db_groups = [];
+        (await db.collection("Groups").get()).forEach(group => db_groups.push( {id: group.id, ...group.data()} ));
+        db_groups.sort((a,b) => { return a.school.toUpperCase() > b.school.toUpperCase() ? 1 : -1 })
+        setGroups(db_groups);
+        return db_groups
+    }
+
+    const getStudents = async function(){
+        const db_students = [];
+        (await db.collection("Students").get()).forEach(student => db_students.push( {id: student.id, ...student.data()} ));
+        setStudents(db_students);
+    }
+
+    useEffect(() => {
+        getSchools();
+        getGroups();
+        getStudents();
     },[reloadData])
 
     function refresh(){
@@ -78,34 +54,20 @@ export default function Admin() {
     function delStudent(id){
         console.log(id)
         db.collection('Students').doc(id).delete()
-        .then(() => {
-            console.log("Student successfully deleted!");
-        }).catch( err => {
-            console.error("Error removing student: ", err);
-        });   
+        .then( () => { console.log("Student successfully deleted!") })
+        .catch( err => {console.error("Error removing student: ", err) });   
 
-        db.collection("Students")
-        .get()
-        .then( snapsot => {
-            const data = snapsot.docs.map(doc => ({
-                id: doc.id,
-                ...doc.data()
-            }))
-            setStudents(data)
-        })
-        .catch( error => {
-            console.log(error)
-        });
+        getStudents();
     }
 
     let num = 1;
     let groupN = '';
-    const drawStudnets = (school, studSchool, studGroup, groupName, idx, name, phone, id, lastLogin, kursova_1, kursova_2, kursova_3) => {
-        if(groupN !== groupName){
-            groupN = groupName;
-           num = 1
+    const drawStudnets = (school, studSchool, studGroupID, groupID, idx, name, phone, id, lastLogin, kursova_1, kursova_2, kursova_3) => {
+        if(groupN !== groupID){
+            groupN = groupID;
+            num = 1
         }
-        if(studGroup === groupName ?? school === studSchool){
+        if(studGroupID === groupID ?? school === studSchool){
             let day;
             let hours;
             let minutes;
@@ -174,8 +136,8 @@ export default function Admin() {
                                         drawStudnets(
                                             school.name, 
                                             student.school, 
-                                            student.group, 
-                                            group.name, 
+                                            student.groupId, 
+                                            group.id, 
                                             idx, 
                                             student.name, 
                                             student.phone, 
