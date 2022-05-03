@@ -15,6 +15,7 @@ export default function Tests() {
     const [testActive, setTestActive] = useState(0);
     const [userUnsvers, setUserUnsvers] = useState([]);
     const [testStats, setTestStats] = useState({});
+    const [answerSelected, setAnswerSelected] = useState(true);
 
     const getTests = async function(){
         let tests = [];
@@ -35,9 +36,11 @@ export default function Tests() {
         setTestActive(newTestN);
         setTest(tests[newTestN]);
         cleareAnswers();
+        setAnswerSelected(true);
     }
 
     const submitUnsver = function(unsver){
+        setAnswerSelected(false)
         let newUserUnsver = tests[testActive];
         newUserUnsver.userUnsver = unsver;
         newUserUnsver.unsverRight == newUserUnsver.userUnsver ? newUserUnsver.points = 1 : newUserUnsver.points = 0;
@@ -111,7 +114,7 @@ export default function Tests() {
                             <p className='text-left'>Невірних відповідей: {testStats.unsversFalse}</p>
                         </div>
                         <div>
-                            <h2 className='my-5'>Ваші відповіді</h2> 
+                            <h4 className='my-5'>Ваші відповіді</h4> 
                             {userUnsvers.map(t => testResults(t))}
                         </div>
                     </div>
@@ -119,7 +122,7 @@ export default function Tests() {
                     <div>
                         <Test test={test} submitUnsver={submitUnsver} cleareAnswers={cleareAnswers}/>
                         <div align="right">
-                            <button className="btn btn-primary" onClick={loadNextTest}>Наступний</button>
+                            <button className="btn btn-primary" onClick={loadNextTest} disabled={answerSelected}>Наступний</button>
                         </div>
                     </div>
                 }
