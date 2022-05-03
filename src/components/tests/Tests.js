@@ -73,7 +73,7 @@ export default function Tests() {
     const testResults = function(test){
         console.log('test')
         console.log(test)
-        return <div className="mt-5">
+        return <div className="mt-5 answer-bordered">
             <h2 className="text-left mt-5">{test.question}</h2>
         
             <div className="my-5">
@@ -114,7 +114,7 @@ export default function Tests() {
                             <p className='text-left'>Правильних відповідей: {testStats.unsversRight}</p>
                             <p className='text-left'>Невірних відповідей: {testStats.unsversFalse}</p>
                         </div>
-                        <div>
+                        <div className='my-answers'>
                             <h4 className='my-5'>Ваші відповіді</h4> 
                             {userUnsvers.map(t => testResults(t))}
                         </div>
