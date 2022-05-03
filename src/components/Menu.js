@@ -36,6 +36,7 @@ export default function Menu() {
                     <Nav.Link href="#/Journal"><i className="fas fa-table"></i> Журнал</Nav.Link>
                     <Nav.Link href="#/Online"><i className="fas fa-laptop-house"></i> Навчання онлайн</Nav.Link>
                     <Nav.Link href="#/Kursova"><i className="fas fa-id-card"></i> Курсова робота</Nav.Link>
+                    <Nav.Link href="#/Tests"><i className="fas fa-laptop-house"></i> Тести</Nav.Link>
                 </>
             )
         }

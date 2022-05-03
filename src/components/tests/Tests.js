@@ -66,6 +66,29 @@ export default function Tests() {
         document.querySelectorAll('.unsver').forEach(e=>e.classList.remove('selected-answer'));
     }
 
+    const testResults = function(test){
+        console.log('test')
+        console.log(test)
+        return <div className="mt-5">
+            <h2 className="text-left mt-5">{test.question}</h2>
+        
+            <div className="my-5">
+                {test.variants?.map( (unsver, idx) => (
+                    <p key={unsver.id} className={`text-left p-2 unsver 
+                        ${test.userUnsver == unsver ?
+                            test.unsverRight == test.userUnsver ? 
+                                "selected-answer" 
+                                : 
+                                "bad-answer" 
+                         : 
+                         ""}`}>
+                        {idx+1}. {unsver}
+                    </p>
+                ))}
+            </div>
+        </div>
+    }
+
     useEffect(()=>{
         if(isLogged){
             getTests();
@@ -77,6 +100,7 @@ export default function Tests() {
             {isLogged ? 
             <>
                 <h1 className="text-center mt-3">Тести по пройденим темам</h1>
+                <h5 className='text-danger text-center'>beta version</h5> 
                 {
                     testActive == tests.length && tests.length != 0 ? 
                     <div className='mt-5'>
@@ -85,6 +109,10 @@ export default function Tests() {
                             <p className='text-left'>Набрано балів: {testStats.totalPoints}</p>
                             <p className='text-left'>Правильних відповідей: {testStats.unsversRight}</p>
                             <p className='text-left'>Невірних відповідей: {testStats.unsversFalse}</p>
+                        </div>
+                        <div>
+                            <h2 className='my-5'>Ваші відповіді</h2> 
+                            {userUnsvers.map(t => testResults(t))}
                         </div>
                     </div>
                     :
