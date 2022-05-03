@@ -74,7 +74,7 @@ export default function Tests() {
         console.log('test')
         console.log(test)
         return <div className="mt-5 answer-bordered">
-            <h2 className="text-left mt-5">{test.question}</h2>
+            <h4 className="text-left mt-5">{test.question}</h4>
         
             <div className="my-5">
                 {test.variants?.map( (unsver, idx) => (
