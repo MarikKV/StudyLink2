@@ -19,7 +19,8 @@ export default function Tests() {
 
     const getTests = async function(){
         let tests = [];
-        (await db.collection("Tests").get()).forEach(test => tests.push({id: test.id, ...test.data()}))
+        (await db.collection("Tests").get()).forEach(test => tests.push({id: test.id, ...test.data()}));
+        tests.forEach(t => t.variants.sort((a, b) => 0.5 - Math.random()))
         setTests(tests);
         setTestActive(0);
         setTest(tests[0]);
