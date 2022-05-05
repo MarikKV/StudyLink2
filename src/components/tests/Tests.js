@@ -16,14 +16,20 @@ export default function Tests() {
     const [userUnsvers, setUserUnsvers] = useState([]);
     const [testStats, setTestStats] = useState({});
     const [answerSelected, setAnswerSelected] = useState(true);
+    const [testsLoaded, setTestsLoaded] = useState(false);
 
-    const getTests = async function(){
+    const getTests = async function(kurs){
         let tests = [];
-        (await db.collection("Tests").get()).forEach(test => tests.push({id: test.id, ...test.data()}));
+        (
+            await db.collection("Tests")
+            .where("kurs", "==", kurs)
+            .get()
+        ).forEach(test => tests.push({id: test.id, ...test.data()}));
         tests.forEach(t => t.variants.sort((a, b) => 0.5 - Math.random()))
         setTests(tests);
         setTestActive(0);
         setTest(tests[0]);
+        setTestsLoaded(true);
     }
 
     const loadNextTest = function(){
@@ -94,9 +100,7 @@ export default function Tests() {
     }
 
     useEffect(()=>{
-        if(isLogged){
-            getTests();
-        }
+
     },[status, user.group, user.kurs])
 
     return (
@@ -104,7 +108,15 @@ export default function Tests() {
             {isLogged ? 
             <>
                 <h1 className="text-center mt-3">Тести по пройденим темам</h1>
-                <h5 className='text-danger text-center'>beta version</h5> 
+                <h5 className='text-danger text-center'>beta version*</h5>
+                {
+                    !testsLoaded && 
+                    <p align="center">
+                        <button className='btn btn-light mb-3' onClick={() => getTests('1')} >Завантажити тести по темі HTML/CSS</button>
+                        <br/>
+                        <button className='btn btn-light mb-3' onClick={() => getTests('2')}>Завантажити тести по темі JavaScript</button>
+                    </p> 
+                }
                 {
                     testActive == tests.length && tests.length != 0 ? 
                     <div className='mt-5'>
@@ -122,9 +134,19 @@ export default function Tests() {
                     :
                     <div>
                         <Test test={test} submitUnsver={submitUnsver} cleareAnswers={cleareAnswers}/>
-                        <div align="right">
-                            <button className="btn btn-primary" onClick={loadNextTest} disabled={answerSelected}>Наступний</button>
-                        </div>
+                        {
+                            testsLoaded && 
+                            <div align="right">
+                                <button 
+                                    className="btn btn-primary" 
+                                    onClick={loadNextTest} 
+                                    disabled={answerSelected} 
+                                    title="Виберіть відповідь щоб продовжити."
+                                >
+                                    Наступний
+                                </button>
+                            </div>
+                        }
                     </div>
                 }
             </>

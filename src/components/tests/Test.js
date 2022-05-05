@@ -65,8 +65,7 @@ export default function Test(props) {
             <h4>Часу залишилось: {timeLeft}</h4>
             <hr style={lineStyles} id="line" className="test_line" align="left" color="green" width={line} />
             */}
-            <h2 className="text-left mt-5">{props.test.question}</h2>
-           
+            <h4 className="text-left mt-5" dangerouslySetInnerHTML={{ __html: props.test.question }}></h4>
             <div className="my-5">
                 {props.test.variants?.map( (unsver, idx) => (
                     <p key={idx} className="text-left p-2 unsver" onClick={e => chuseAnswer(e.target, unsver)}>{idx+1}. {unsver}</p>

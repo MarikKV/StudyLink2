@@ -1,12 +1,21 @@
 .unsver{
     border-top: 1px solid rgba(0,0,0, 0.2);
     border-bottom: 1px solid  rgba(0,0,0, 0.2);
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    &:hover{
+        background: rgba(155, 246, 155, 0.362);
+    }
 }
 .test_line{
-    //transition: width 1s linear;
+    transition: width 1s linear;
 }
 .selected-answer{
     background: lime;
+    &:hover{
+        background: lime;
+    }
 }
 .bad-answer{
     background: red;
@@ -20,4 +29,7 @@
 .answer-bordered{
     border-top: 2px solid aqua;
     border-bottom: 2px solid aqua;
+}
+xmp{
+    background: lightyellow;
 }
