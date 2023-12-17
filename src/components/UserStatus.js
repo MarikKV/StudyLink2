@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { getFirestore, collection, where, query, getDocs, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { adminLogin, saveStudentInfoInStore, userStatus, login } from '../actions';
 import '../styles/SignInToGroup.scss';
@@ -23,81 +24,71 @@ export default function UserStatus() {
 
     const dispatch = useDispatch()
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
-        if(status === 'Адміністратор'){
-            console.log(process.env.REACT_APP_ADMIN_PASS)
-            if(adminPassword === process.env.REACT_APP_ADMIN_PASS){
-                dispatch(login(true))
-                dispatch(adminLogin(true))
-                dispatch(userStatus('Admin'))
-                setAdminPassword('')
-            }else{
-                setErrorPass(true);
-                setTimeout(()=>setErrorPass(false),3000)
+        if (status === 'Адміністратор') {
+          console.log(process.env.REACT_APP_ADMIN_PASS);
+          if (adminPassword === process.env.REACT_APP_ADMIN_PASS) {
+            dispatch(login(true));
+            dispatch(adminLogin(true));
+            dispatch(userStatus('Admin'));
+            setAdminPassword('');
+          } else {
+            setErrorPass(true);
+            setTimeout(() => setErrorPass(false), 3000);
+          }
+        }
+        if (status === 'Учень') {
+          console.log('учень', school, group, groupPassword);
+          let passed = false;
+          const studentsQuery = query(collection(db, 'Students'), where('group', '==', group));
+          try {
+            const snapshot = await getDocs(studentsQuery);
+            snapshot.forEach((document) => {
+              const user = { id: doc.id, ...document.data() };
+              if (user.password === groupPassword) {
+                console.log(user.id);
+                updateDoc(doc(db, 'Students', user.id), {
+                  lastLogin: Date.now(),
+                });
+                dispatch(login(true));
+                dispatch(saveStudentInfoInStore({ status, ...user }));
+                dispatch(userStatus('Student'));
+                passed = true;
+              }
+            });
+            if (!passed) {
+              setErrorPass(true);
+              setTimeout(() => {
+                setErrorPass(false);
+                console.log('hide');
+              }, 3000);
             }
+          } catch (err) {
+            console.log(err);
+          }
         }
-        if(status === 'Учень'){
-            console.log('учень', school, group, groupPassword)
-            let passed = false;
-            db.collection('Students').where('group', '==', group)
-            .get()
-            .then( 
-                snapsot => {
-                    const data = snapsot.docs.map(doc => ({
-                        id: doc.id,
-                        ...doc.data()
-                    }))
-                    data.map(user => {
-                        if(user.password === groupPassword){ 
-                            console.log(user.id)
-                            db.collection('Students').doc(user.id).update({
-                                lastLogin: Date.now()
-                            })
-                            dispatch(login(true))
-                            dispatch(saveStudentInfoInStore({status, ...user}))
-                            dispatch(userStatus('Student'))
-                            passed = true;
-                        }
-                        return true
-                    })
-                    if(!passed){ 
-                        setErrorPass(true);
-                        setTimeout(()=>{
-                            setErrorPass(false)
-                            console.log('hide')
-                        }, 3000);
-                    }
-                }
-            )
-            .catch(err => console.log(err))
+        if (status === 'Вчитель') {
+          const teachersQuery = query(collection(db, 'Teachers'), where('school', '==', school));
+          try {
+            const snapshot = await getDocs(teachersQuery);
+            const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+            if (data[0].password === schoolPassword) {
+              dispatch(login(true));
+              dispatch(saveStudentInfoInStore({ status, ...data[0] }));
+              dispatch(userStatus('Teacher'));
+            } else {
+              setErrorPass(true);
+              setTimeout(() => {
+                setErrorPass(false);
+                console.log('hide');
+              }, 3000);
+            }
+          } catch (err) {
+            console.log(err);
+          }
         }
-        if(status === 'Вчитель'){
-            db.collection('Teachers').where('school', '==', school)
-            .get()
-            .then( 
-                snapsot => {
-                    const data = snapsot.docs.map(doc => ({
-                        id: doc.id,
-                        ...doc.data()
-                    }))
-                    if(data[0].password === schoolPassword){ 
-                        dispatch(login(true))
-                        dispatch(saveStudentInfoInStore({status, ...data[0]}))
-                        dispatch(userStatus('Teacher'))
-                    } else{
-                        setErrorPass(true);
-                        setTimeout(()=>{
-                            setErrorPass(false)
-                            console.log('hide')
-                        }, 3000);
-                    }
-                    
-                }
-            )
-            .catch(err => console.log(err))
-        }
-    }
+      };
     //fields components
     let [ schoolField, groupChuse, loginAndPass, adminPassCheck ] = [null, null, null, null];
     if(status === 'Учень'){
@@ -200,35 +191,38 @@ export default function UserStatus() {
         )
     }
     useEffect(() => {
-        db.collection('Schools')
-        .get()
-        .then( 
-            snapsot => {
-                const allSchools = snapsot.docs.map(doc => ({
-                    id: doc.id,
-                    ...doc.data()
-                }))
-                setSchools(allSchools)
+        const fetchSchools = async () => {
+          try {
+            const schoolsSnapshot = await getDocs(collection(db, 'Schools'));
+            const allSchools = schoolsSnapshot.docs.map((doc) => ({
+              id: doc.id,
+              ...doc.data(),
+            }));
+            setSchools(allSchools);
+          } catch (err) {
+            console.error('Error fetching schools:', err);
+          }
+        };
+      
+        const fetchGroups = async () => {
+          if (school) {
+            try {
+              const groupsQuery = query(collection(db, 'Groups'), where('school', '==', school));
+              const groupsSnapshot = await getDocs(groupsQuery);
+              const allGroups = groupsSnapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+              }));
+              setGroups(allGroups);
+            } catch (err) {
+              console.error('Error fetching groups:', err);
             }
-        )
-        .catch(err => console.log(err))
-
-        if(school){
-            console.log('done', school)
-            db.collection('Groups').where('school', '==', school)
-            .get()
-            .then( 
-                snapsot => {
-                    const allGroups = snapsot.docs.map(doc => ({
-                        id: doc.id,
-                        ...doc.data()
-                    }))
-                    setGroups(allGroups)
-                }
-            )
-            .catch(err => console.log(err))
-        }
-    }, [admin, school])
+          }
+        };
+      
+        fetchSchools();
+        fetchGroups();
+      }, [admin, school]);
     if(myStatus !== 'Guest') return <Redirect to='#/home'/>
     return (
         <div className='form'>

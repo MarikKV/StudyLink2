@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Tab, Tabs } from 'react-bootstrap';
+import { getFirestore, collection, where, query, getDocs, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 import TemesForKurs from './TemesForKurs';
 
@@ -14,120 +15,58 @@ export default function Temes() {
     const [temesJS, setTemesJS] = useState([]);
     const [temesJS2, setTemesJS2] = useState([]);
 
-    useEffect(()=>{
-        if(status === 'Student'){
-            db.collection("Groups")
-            .where('name', '==', user.group)
-            .get()
-            .then( snapsot => {
-                const data = snapsot.docs.map(doc => ({
-                    id: doc.id,
-                    ...doc.data()
+    useEffect(() => {
+        const fetchTemes = async (collectionName, passField) => {
+          try {
+            const temesSnapshot = await getDocs(collection(db, collectionName));
+            const allTemes = temesSnapshot.docs.map((doc) => ({
+              id: doc.id,
+              ...doc.data(),
+            }));
+            allTemes.sort((a, b) => a.id - b.id);
+    
+            const passedTemes = allTemes.slice(0, user[passField]);
+            return passedTemes;
+          } catch (error) {
+            console.error(`Error fetching ${collectionName}:`, error);
+            return [];
+          }
+        };
+    
+        const fetchData = async () => {
+          if (status === 'Student') {
+            try {
+              const groupsSnapshot = await getDocs(collection(db, 'Groups'));
+              const groupData = groupsSnapshot.docs
+                .map((doc) => ({
+                  id: doc.id,
+                  ...doc.data(),
                 }))
-                
-                    db.collection("Temes")
-                    .get()
-                    .then( snapsot => {
-                        const alltemes = snapsot.docs.map(doc => ({
-                            id: doc.id,
-                            ...doc.data()
-                        }))
-                        alltemes.sort((a, b) => a.id - b.id);
-                        if(user.kurs === '2'){
-                            setTemes(alltemes)
-                        } else {
-                            const newTemes = alltemes.slice(0, data[0].temes_pass);
-                            setTemes(newTemes)
-                        }
-                    })
-                    .catch( error => {
-                        console.log(error)
-                    });
-
-                    db.collection("Temes2")
-                    .get()
-                    .then( snapsot => {
-                        const alltemesJS = snapsot.docs.map(doc => ({
-                            id: doc.id,
-                            ...doc.data()
-                        }))
-                        console.log(alltemesJS, "test")
-                        alltemesJS.sort((a, b) => a.id - b.id);
-                        
-                        const newTemesJS = alltemesJS.slice(0, data[0].temes2_pass);
-                        setTemesJS(newTemesJS)
-                        console.log(temesJS)
-                        
-                    })
-                    .catch( error => {
-                        console.log(error)
-                    });
-
-                    db.collection("Temes3")
-                    .get()
-                    .then( snapsot => {
-                        const alltemesJS2 = snapsot.docs.map(doc => ({
-                            id: doc.id,
-                            ...doc.data()
-                        }))
-                        alltemesJS2.sort((a, b) => a.id - b.id);
-                        const newTemesJS2 = alltemesJS2.slice(0, data[0].temes3_pass);
-                        setTemesJS2(newTemesJS2)
-                        console.log(temesJS2, "test2")
-                    })
-                    .catch( error => {
-                        console.log(error)
-                    });
-            })
-            .catch( error => {
-                console.log(error)
-            });
-        }
-        else if( status === 'Teacher' || status === 'Admin'){
-            db.collection("Temes")
-            .get()
-            .then( snapsot => {
-                const alltemes = snapsot.docs.map(doc => ({
-                    id: doc.id,
-                    ...doc.data()
-                }))
-                alltemes.sort((a, b) => a.id - b.id);
-                setTemes(alltemes)
-            })
-            .catch( error => {
-                console.log(error)
-            });
-
-            db.collection("Temes2")
-            .get()
-            .then( snapsot => {
-                const alltemesJS = snapsot.docs.map(doc => ({
-                    id: doc.id,
-                    ...doc.data()
-                }))
-                alltemesJS.sort((a, b) => a.id - b.id);
-                setTemesJS(alltemesJS)
-            })
-            .catch( error => {
-                console.log(error)
-            });
-
-            db.collection("Temes3")
-            .get()
-            .then( snapsot => {
-                const alltemesJS2 = snapsot.docs.map(doc => ({
-                    id: doc.id,
-                    ...doc.data()
-                }))
-                alltemesJS2.sort((a, b) => a.id - b.id);
-                setTemesJS2(alltemesJS2)
-                console.log(temesJS2)
-            })
-            .catch( error => {
-                console.log(error)
-            });
-        } 
-    },[status, user.group, user.kurs])
+                .find((group) => group.name === user.group);
+    
+              const newTemes = await fetchTemes('Temes', 'temes_pass');
+              const newTemesJS = await fetchTemes('Temes2', 'temes2_pass');
+              const newTemesJS2 = await fetchTemes('Temes3', 'temes3_pass');
+    
+              setTemes(newTemes);
+              setTemesJS(newTemesJS);
+              setTemesJS2(newTemesJS2);
+            } catch (error) {
+              console.error('Error fetching data for student:', error);
+            }
+          } else if (status === 'Teacher' || status === 'Admin') {
+            const allTemes = await fetchTemes('Temes', 'temes_pass');
+            const allTemesJS = await fetchTemes('Temes2', 'temes2_pass');
+            const allTemesJS2 = await fetchTemes('Temes3', 'temes3_pass');
+    
+            setTemes(allTemes);
+            setTemesJS(allTemesJS);
+            setTemesJS2(allTemesJS2);
+          }
+        };
+    
+        fetchData();
+      }, [status, user.group, user.kurs]);
 
     return (
         <div>

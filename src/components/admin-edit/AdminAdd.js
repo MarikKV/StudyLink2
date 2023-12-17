@@ -12,7 +12,7 @@ export default function AdminAdd(props) {
     }
     const inActiveGroups = props.groups.filter(g => g.inActive == true).map(g => g.name);
     const inActiveStudents = props.students.filter(s => inActiveGroups.includes(s.group));
-    if( props.schools !== [] && props.groups !== [] && props.students !== [] ){
+    if( props.schools != [] && props.groups != [] && props.students != [] ){
 
     return (
         <div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Nav, Navbar } from 'react-bootstrap';
 import { firebase } from '../firebase';
+import { getAuth, signOut } from 'firebase/auth'; 
 import { login, saveUserInStore, adminLogin, userStatus, saveStudentInfoInStore } from '../actions'
 
 export default function Menu() {
@@ -14,14 +15,20 @@ export default function Menu() {
 
     const dispatch = useDispatch()
 
-    const logOut = () => {
-        firebase.auth().signOut(); 
-        dispatch(login(false))
-        dispatch(saveUserInStore({}))
-        dispatch(saveStudentInfoInStore({}))
-        dispatch(adminLogin(false))
-        dispatch(userStatus('Guest'))
-    }
+    const logOut = async () => {
+        const auth = getAuth(firebase); // Get the auth instance
+    
+        try {
+          await signOut(auth); // Use the signOut function from the auth instance
+          dispatch(login(false));
+          dispatch(saveUserInStore({}));
+          dispatch(saveStudentInfoInStore({}));
+          dispatch(adminLogin(false));
+          dispatch(userStatus('Guest'));
+        } catch (error) {
+          console.error('Error signing out:', error);
+        }
+      };
 
     useEffect(()=>{
         if(status === 'Guest'){
@@ -33,10 +40,7 @@ export default function Menu() {
             setStatusLinks(
                 <>
                     <Nav.Link href="#/Temes"><i className="fas fa-book"></i> Теми</Nav.Link>
-                    <Nav.Link href="#/Journal"><i className="fas fa-table"></i> Журнал</Nav.Link>
                     <Nav.Link href="#/Online"><i className="fas fa-laptop-house"></i> Навчання онлайн</Nav.Link>
-                    <Nav.Link href="#/Kursova"><i className="fas fa-id-card"></i> Курсова робота</Nav.Link>
-                    <Nav.Link href="#/Tests"><i className="fas fa-laptop-house"></i> Тести</Nav.Link>
                 </>
             )
         }
@@ -47,7 +51,6 @@ export default function Menu() {
                 <Nav.Link href="#/HomeTeacher"><i className="fas fa-users"></i> Мої групи</Nav.Link>
                 <Nav.Link href="#/AddTeacher"><i className="fas fa-plus-circle"></i> Додати/Видалити учня</Nav.Link>
                 <Nav.Link href="#/Online"><i className="fas fa-laptop-house"></i> Навчання онлайн</Nav.Link>
-                <Nav.Link href="#/Tests"><i className="fas fa-laptop-house"></i> Тести</Nav.Link>
                 </>
             )
        }
@@ -58,8 +61,6 @@ export default function Menu() {
                 <Nav.Link href="#/Admin"><i className="fas fa-plus-circle"></i> Додати школу/групу/учня</Nav.Link>
                 <Nav.Link href="#/AddTheme"><i className="fas fa-newspaper"></i> Додати тему</Nav.Link>
                 <Nav.Link href="#/Online"><i className="fas fa-laptop-house"></i> Навчання онлайн</Nav.Link>
-                <Nav.Link href="#/AddTest"><i className="fas fa-laptop-house"></i> Додати тести</Nav.Link>
-                <Nav.Link href="#/Tests"><i className="fas fa-laptop-house"></i> Тести</Nav.Link>
             </>
         )
    }
